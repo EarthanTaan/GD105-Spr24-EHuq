@@ -9,11 +9,19 @@ void setup(){
 // the code in this block runs once
 // every frame of the program
 void draw(){
-   background(142);
+  PVector ptA = new PVector(175, 225);
+  PVector ptB = new PVector(325, 225);
+  PVector ptC = new PVector(250, 300);
+  
+   background(200);
    strokeWeight(1);
    stroke(0);
    
-   triangle(165, 225, 335, 225, 250, 300);
+   fill(#4d7daa);
+   circle(250, 225, 160);
+   fill(252);
+   
+   triangle(ptA.x, ptA.y, ptB.x, ptB.y, ptC.x, ptC.y);
    
    quad(63, 224, 425, 281, 60, 205, 421, 221);
    // tweaking these sucks on a trackpad
