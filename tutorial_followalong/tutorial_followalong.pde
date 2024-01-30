@@ -35,14 +35,14 @@ void draw(){
    point(260, 240);
    point(240, 260);
 
+
+   /* (multi-line comment)
+   The following saves the canvas as an image on
+   the first frame only:
    
-   
-      
-   // This saves the canvas as an image on the
-   // first frame only:
-   //if (frameCount == 1) {
-   //  save("output.png");
-   //}
-   // end code snippet. (There are other times
-   // to save, such as on mouse press)
+if (frameCount == 1){save("output.png");}
+
+   (There are other ways/times to save,
+   such as on mouse press)
+   */
 }
