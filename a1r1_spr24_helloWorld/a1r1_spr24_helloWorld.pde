@@ -10,18 +10,25 @@ void setup(){
 // every frame of the program
 void draw(){
    background(142);
+   strokeWeight(1);
+   stroke(0);
    
    triangle(165, 225, 335, 225, 250, 300);
    
-   quad(63, 231, 409, 281, 62, 205, 452, 203);
+   quad(63, 224, 425, 281, 60, 205, 421, 221);
+   // tweaking these sucks on a trackpad
    
    square(225, 225, 50);
    
-   strokeWeight(2);
+   stroke(#f21f33);
+   line(98, 105, 381, 375);
+   
+   strokeWeight(5);
    point(260, 240);
    point(240, 260);
 
-   line(98, 105, 381, 375);
+   
+   
       
    // This saves the canvas as an image on the
    // first frame only:
