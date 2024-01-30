@@ -6,14 +6,17 @@ older than myself.
 
 //this runs once at the start
 void setup(){
-  size(750, 750);
+  
+  //original dimensions: 30 x 22 in.
+  //sketch dimensions: inches times 30
+  size(660, 900);
 }
 
 //this runs constantly ever after (updates in frames)
 void draw(){
   //define variables at the top here.
   
-  background(255);
+  background(212);
   strokeWeight(1);
   
   //lines go here
