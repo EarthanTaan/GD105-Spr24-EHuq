@@ -14,21 +14,39 @@ void setup(){
 
 //this runs constantly ever after (updates in frames)
 void draw(){
-  //define variables at the top here.
+  //setting the outer bounds of the linework
   PVector ptA = new PVector(100, 100);
-  PVector ptB = new PVector(560, 100);
-  PVector ptC = new PVector(100, 800);
-  PVector ptD = new PVector(560, 800);
+  PVector ptB = new PVector(560, ptA.y);
+  PVector ptC = new PVector(ptA.x, 800);
+  PVector ptD = new PVector(ptB.x, ptC.y);
+  
+  //defining the second vertical line
+  PVector line2A = new PVector(190, ptA.y);
+  PVector line2B = new PVector(line2A.x, ptC.y);
+  
+  //defining the third vertical line
+  PVector line3A = new PVector(480, ptA.y);
+  PVector line3B = new PVector(line3A.x, ptC.y);
+  
+  //setting coordinates for the horizontal ladder
+  PVector rightlad = new PVector(line3A.x, 150);
   
   background(212);
-  //strokeWeight(1);
+  strokeCap(PROJECT);
   
-  stroke(0);
-  strokeWeight(5);
-  point(ptA.x, ptA.y);
-  point(ptB.x, ptB.y);
-  point(ptC.x, ptC.y);
-  point(ptD.x, ptD.y);
+  strokeWeight(30);
+  line(ptA.x, ptA.y, ptC.x, ptC.y);
+  strokeWeight(20);
+  line(ptB.x, ptB.y, ptD.x, ptD.y);
   
-  //lines go here
+  //drawing the second vertical line
+  strokeWeight(50);
+  line(line2A.x, line2A.y, line2B.x, line2B.y);
+  //drawing the third vertical line
+  strokeWeight(50);
+  line(line3A.x, line3A.y, line3B.x, line3B.y);
+  
+  //drawing the "ladder rungs" (why isn't this working how I want it to?)
+  line(275, line2A.y, line3A.x, line3A.y);
+  
 }
