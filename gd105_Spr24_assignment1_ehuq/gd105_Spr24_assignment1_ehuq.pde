@@ -74,7 +74,7 @@ void draw(){
   line(line2A.x, ht910.y, runglength.y, ht910.y);
   line(line2A.x, ht1112.y, runglength.y, ht1112.y);
   
-  //if (frameCount == 1){save("Fake SS-1-78.png");}
+  //if (frameCount == 1){save("Prompt1 output.png");}
 
   
 }
