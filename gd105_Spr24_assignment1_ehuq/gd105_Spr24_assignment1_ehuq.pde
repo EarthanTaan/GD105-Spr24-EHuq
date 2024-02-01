@@ -15,8 +15,8 @@ void setup(){
 //this runs constantly ever after (updates in frames)
 void draw(){
   //setting the outer bounds of the linework
-  PVector ptA = new PVector(100, 100);
-  PVector ptB = new PVector(560, ptA.y);
+  PVector ptA = new PVector(110, 100);
+  PVector ptB = new PVector(545, ptA.y);
   PVector ptC = new PVector(ptA.x, 800);
   PVector ptD = new PVector(ptB.x, ptC.y);
   
@@ -32,12 +32,12 @@ void draw(){
   // runglength.x is the start of the right rungs
   // runglength.y is the end of the left rungs
   // ht12 contains the heights for rungs 1 & 2 etc.
-  PVector runglength = new PVector(250, 420);
-  PVector ht12 = new PVector(146, 207);
-  PVector ht34 = new PVector(270, 326);
-  PVector ht56 = new PVector(377, 433);
-  PVector ht78 = new PVector(491, 551);
-  PVector ht910 = new PVector(615, 670);
+  PVector runglength = new PVector(240, 430);
+  PVector ht12 = new PVector(145, 200);
+  PVector ht34 = new PVector(258, 317);
+  PVector ht56 = new PVector(375, 430);
+  PVector ht78 = new PVector(490, 550);
+  PVector ht910 = new PVector(610, 670);
   PVector ht1112 = new PVector(730, 785);
 
   
@@ -51,7 +51,7 @@ void draw(){
   line(ptB.x, ptB.y, ptD.x, ptD.y);
   
   //line2: the second vertical line, ladder's left side
-  strokeWeight(50);
+  strokeWeight(40);
   line(line2A.x, line2A.y, line2B.x, line2B.y);
   //line3: the third vertical line, ladder's right side
   line(line3A.x, line3A.y, line3B.x, line3B.y);
