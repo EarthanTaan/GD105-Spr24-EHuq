@@ -17,15 +17,16 @@ void draw(){
 // Draw background
   background(#71174a);
 //Draw big light-purple X
-  PVector xtop = new PVector(-180,-33);
-  PVector xbot = new PVector(1178, 1377);
+  //PVector xtop = new PVector(-180,-33);
+  //PVector xbot = new PVector(1178, 1377);
+  PVector xtop = new PVector(width*-0.05, height*0.10);
+  PVector xbot = new PVector(width*1.05, height*1.25);
   
   strokeCap(PROJECT);
   stroke(#882b5d);
-  strokeWeight(326);
+  strokeWeight(305);
   line(xtop.x, xtop.y, xbot.x, xbot.y);
   line(xtop.x, xbot.y, xbot.x, xtop.y);
- 
 
 // Draw dark-purple Square in lower portion
   fill(#71174a);
