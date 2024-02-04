@@ -9,7 +9,7 @@ Colors Reference
 */
 
 void setup(){
-  size(900, 900);
+  size(1000, 1000);
 
 }
 
@@ -18,24 +18,30 @@ void draw(){
   background(#71174a);
 //Draw big mid-tone X
   PVector xtop = new PVector(-180,-33);
-  PVector xbot = new PVector(1124, 1246);
+  PVector xbot = new PVector(1178, 1377);
   
   strokeCap(PROJECT);
   stroke(#882b5d);
-  strokeWeight(303);
+  strokeWeight(326);
   line(xtop.x, xtop.y, xbot.x, xbot.y);
   line(xtop.x, xbot.y, xbot.x, xtop.y);
+ 
 
 // Draw Square in lower portion, same color as BG
   fill(#71174a);
   noStroke();
-  square(211, 336, 507);
+  square(184, 332, 610);
   
 // Draw light-tone V
-  stroke(#892d60);
-  strokeCap(SQUARE);
+  fill(#892d60);
+  triangle(900,900, 950,950, 825,825);
   
-
+//guideline
+  stroke(0);
+  strokeWeight(1);
+  line(width/2,0, width/2,height);
+  line(0,height/2, width,height/2);
+  
 // Draw little pale-tone square
 
 // Draw BG-color lines
