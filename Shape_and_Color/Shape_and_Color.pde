@@ -18,6 +18,7 @@ void draw(){
   background(#71174a);
   
 //Draw big light-purple X
+
   PVector xtop = new PVector(width*-0.05, height*0.10);
   PVector xbot = new PVector(width*1.05, height*1.25);
   
@@ -28,13 +29,31 @@ void draw(){
   line(xtop.x, xbot.y, xbot.x, xtop.y);
 
 // Draw dark-purple Square in lower portion
-  fill(#71174a);
+
+  PVector squp = new PVector(width*0.250, height*0.383);
+  PVector sqdn = new PVector(width*0.750, height*0.944);
+
   noStroke();
-  square(184, 332, 610);
+  
+  fill(#71174a);
+  rectMode(CORNERS);
+  rect(squp.x, squp.y, sqdn.x, sqdn.y);
   
 // Draw light-orange V
   fill(#BA4823);
-  triangle(794,533, 795,753, 636,751);
+  quad(
+    sqdn.x, height*0.500,
+    sqdn.x, height*0.750,
+    width/2+100, sqdn.y,
+    width/2-100, sqdn.y
+  );
+    
+  quad(
+    squp.x, height*0.500,
+    squp.x, height*0.750,
+    width/2-100, sqdn.y,
+    width/2+100, sqdn.y
+  );
   
 // Draw little dark-orange square
 
