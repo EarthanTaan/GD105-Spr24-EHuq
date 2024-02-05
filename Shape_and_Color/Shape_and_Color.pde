@@ -1,6 +1,7 @@
 /* The Shape and Color Piece, Prompt 2
- Kamal Boullata "Lam Alif" (1983)
- Original size: 51 × 51 cm
+ Based on Kamal Boullata's "Lam Alif" (1983)
+(This is older than me if it was revealed in Jan or early Feb.)
+ Original size: 51 × 51 cm (turns out this is not true, the real piece is not square)
  Colors Reference
  1: #71174a dark purple
  2: #882b5d light purple
@@ -87,6 +88,8 @@ void draw() {
     width/2 - off2, lnlvl,
     width/2 + off2, lnlvl
     );
+  
+  //if (frameCount == 1){save("Prompt 2 output.png");}
 }
 
 /*Orphaned code graveyard, no longer useful 
