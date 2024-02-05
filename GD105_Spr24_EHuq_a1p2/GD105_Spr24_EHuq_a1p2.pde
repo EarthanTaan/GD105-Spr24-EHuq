@@ -89,7 +89,7 @@ void draw() {
     width/2 + off2, lnlvl
     );
   
-  //if (frameCount == 1){save("Prompt 2 output.png");}
+  //if (frameCount == 1){save("GD105 Spr24 EHuq a1p2 output.png");}
 }
 
 /*Orphaned code graveyard, no longer useful 
