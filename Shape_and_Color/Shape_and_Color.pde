@@ -57,6 +57,13 @@ void draw(){
   
 // Draw little dark-orange square
 
+  fill(#A13727);
+  int offset = 152;
+  rect(
+    width/2 - offset, height*0.556,
+    width/2 + offset, height*0.874
+   );
+
 // Draw dark-purple lines
 
 //guidelines
@@ -76,6 +83,11 @@ void draw(){
   square(197,112,50);
   fill(#BA4823);
   square(251,172,50);
+  
+  find corners
+  stroke(0);
+  strokeWeight(7);
+  point(width*0.633, height*0.896);
 */
 
 }
