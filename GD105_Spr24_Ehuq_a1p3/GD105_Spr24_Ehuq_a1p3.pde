@@ -6,6 +6,7 @@
 void setup(){
   // TODO: set the canvas size to something nice and big,
   // but smaller than your screen
+  size(200, 950);
   
   // if there are any text styles we want
   // to set that won't change, do that here
@@ -14,10 +15,17 @@ void setup(){
   // and then set the current font style
 }
 
-// the draw function runs every frame, over and over
-// any code we have in here will run multiple times
 void draw(){
-  // TODO: paint the background a solid color
+  background(0);
+  
+  String tru = "crime against property is relatively unimportant";
+  
+  rotate(TAU*0.25);
+  
+  textSize(102);
+  text(tru, -8,-10);
+   
    
   // save a copy of our canvas on the first frame so we have a clean .png
+  //if (frameCount == 1){save("GD105 Spr24 EHuq a1p3 output.png");}
 }
