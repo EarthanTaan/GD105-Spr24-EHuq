@@ -1,6 +1,4 @@
 //"crime against property is relatively unimportant"
-
-// optional: save our truism to memory in the form of a String
 // optional: save our font to memory in the form of a PFont
 
 void setup(){
@@ -16,16 +14,17 @@ void setup(){
 }
 
 void draw(){
-  background(0);
-  
+  background(0);  
   String tru = "crime against property is relatively unimportant";
-  
-  textSize(100);
   translate(width/2, height/2);
+  textSize(100);
+
   rotate(TAU*0.250);
   text(tru, -484,96);
+  
   rotate(TAU*-0.250);
   text(tru, -1000, height*0.50);
+  
   rotate(TAU*-0.250);
   text(tru, -1523, 96);
   
