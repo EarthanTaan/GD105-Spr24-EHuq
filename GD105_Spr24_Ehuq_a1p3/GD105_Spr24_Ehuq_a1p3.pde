@@ -20,11 +20,15 @@ void draw(){
   
   String tru = "crime against property is relatively unimportant";
   
-  rotate(TAU*0.25);
+  textSize(100);
+  translate(width/2, height/2);
+  rotate(TAU*0.250);
+  text(tru, -484,96);
+  rotate(TAU*-0.250);
+  text(tru, -1000, height*0.50);
+  rotate(TAU*-0.250);
+  text(tru, -1523, 96);
   
-  textSize(102);
-  text(tru, -8,-10);
-   
    
   // save a copy of our canvas on the first frame so we have a clean .png
   //if (frameCount == 1){save("GD105 Spr24 EHuq a1p3 output.png");}
