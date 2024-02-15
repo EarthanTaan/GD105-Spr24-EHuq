@@ -14,9 +14,8 @@ size(900, 900);
 }
 
 void draw(){
-//Draw the map using shapes and lines.
-
-//Let's try a parchment-like color.
+//Draw the map using shapes and lines
+//Rememer to get a BG in first. Let's try a parchment-like color.
   background(#F0EED5); //close enough
 
   
