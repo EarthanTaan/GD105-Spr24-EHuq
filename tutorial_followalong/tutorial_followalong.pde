@@ -38,11 +38,10 @@ void draw(){
 
    /* (multi-line comment)
    The following saves the canvas as an image on
-   the first frame only:
-   
-if (frameCount == 1){save("output.png");}
+   the first frame only:   */
 
-   (There are other ways/times to save,
-   such as on mouse press)
-   */
+//if (frameCount == 1){save("tutorial followalong output.png");}
+
+   /* (There are other ways/times to save,
+   such as on mouse press)   */
 }
