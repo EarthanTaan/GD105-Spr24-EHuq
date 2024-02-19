@@ -59,29 +59,29 @@ float pokewi = width*0.67;
   push();
   translate(0, height);
   rotate(TAU*-0.25);
-  text(left, width*0.18, height*0.06);
+  text(left, width*0.20, height*0.05);
   pop();
   push();
   translate(width, 0);
   rotate(TAU*0.25);
-  text(right, width*0.81, height*0.05);
+  text(right, width*0.80, height*0.05);
   pop();
   
 //a guidelines matrix to help me estimate placement
   //horiontal lines
-  stroke(195);
-  line(0, height/2, width, height/2);
-  line(0, height*0.25, width, height*0.25);
-  line(0, height*0.75, width, height*0.75);
-  //vertical lines
-  line(width/2, 0, width/2, height);
-  line(width*0.25, 0, width*0.25, height);
-  line(width*0.75, 0, width*0.75, height);
+  //stroke(195);
+  //line(0, height/2, width, height/2);
+  //line(0, height*0.25, width, height*0.25);
+  //line(0, height*0.75, width, height*0.75);
+  ////vertical lines
+  //line(width/2, 0, width/2, height);
+  //line(width*0.25, 0, width*0.25, height);
+  //line(width*0.75, 0, width*0.75, height);
   
   //a tool to see coordinates so I can skip the trial and error, because I have goddamn dyscalculia
-  fill(0);
-  textSize(20);
-  text("x: "+mouseX+", y: "+mouseY, mouseX, mouseY);
+  //fill(0);
+  //textSize(20);
+  //text("x: "+mouseX+", y: "+mouseY, mouseX, mouseY);
   
   
 if (frameCount == 1){save("GD105 Spr24 EHuq a1p3 output WIP.png");}
