@@ -15,7 +15,7 @@ They might do what you're looking for.
 
   //rect(100, 350, width-200, 50, 40, 40, 0, 0);
   
-  PVector ctrl1 = new PVector(200, 601); //control point 1
+  PVector ctrl1 = new PVector(200, 600); //control point 1
   PVector ctrl2 = new PVector(375, 425); //control point 2
 
   beginShape();
