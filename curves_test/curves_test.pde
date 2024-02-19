@@ -1,40 +1,45 @@
 void setup(){
-  size(500,500);
+  size(800, 800);
+  
 }
 
 void draw(){
+
   background(255);
   
-  //noFill();
-  //beginShape();
-  //  curveVertex(441,  1094);
-  //  curveVertex(563,  584);
-  //  curveVertex(516,  183);
-  //  curveVertex(156,  174);
-  //  curveVertex(108, 448);
-  //  curveVertex(383, 727);
-  //endShape(); 
-
-  //beginShape();
-  //  curveVertex(359,  1244);
-  //  curveVertex(521,  451);
-  //  curveVertex(441,  197);
-  //  curveVertex(226,  219);
-  //  curveVertex(187, 448);
-  //  curveVertex(513, 1006);
-  //endShape();
-  
-/*Try the ther curve vertex types: bezierVertex and quadraticVertex.
+/*Try the other curve vertex types: bezierVertex and quadraticVertex.
 They might do what you're looking for.
 */
+  
+//had it up to here with startShape(), let's try masking a rectangle
+
+  //rect(100, 350, width-200, 50, 40, 40, 0, 0);
+  
+  PVector ctrl1 = new PVector(200, 601); //control point 1
+  PVector ctrl2 = new PVector(375, 425); //control point 2
+
   beginShape();
-    vertex(400, 400);
+    noFill();
+    stroke(0);
     vertex(100, 400);
-    curveVertex(0, 0); //first curveVertex
-    curveVertex(30, 300);
-    curveVertex(250, 250);
-    curveVertex(401, 400);
-    curveVertex(384, 617); //last curveVertex
+    curveVertex(ctrl1.x, ctrl1.y); //ctrl pt 1
+    curveVertex(100, 400); //anchor 1
+    //curveVertex(137, 360);
+    curveVertex(200, 350); //anchor 2
+    curveVertex(ctrl2.x, ctrl2.y); //ctrl pt 2
+    //vertex(600, 400);
+    //curveVertex(100, 400);
   endShape();
   
+  stroke(#E82AA6);
+  line(100, 400, ctrl1.x, ctrl1.y);
+  circle(ctrl1.x, ctrl1.y, 5); //visualize ctrl 1
+  stroke(#44D897);
+  line(200, 350, ctrl2.x, ctrl2.y);
+  circle(ctrl2.x, ctrl2.y, 5); //visualize ctrl 2
+//a tool to see coordinates so I can skip the trial and error, because I have goddamn dyscalculia
+  fill(0);
+  textSize(20);
+  text("x: "+mouseX+", y: "+mouseY, mouseX, mouseY);
+
 }
