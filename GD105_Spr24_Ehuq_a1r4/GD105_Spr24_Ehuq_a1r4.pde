@@ -84,5 +84,5 @@ float pokewi = width*0.67;
   //text("x: "+mouseX+", y: "+mouseY, mouseX, mouseY);
   
   
-if (frameCount == 1){save("GD105 Spr24 EHuq a1p3 output WIP.png");}
+if (frameCount == 1){save("GD105 Spr24 EHuq a1r4 output WIP.png");}
 }

@@ -35,5 +35,5 @@ orientation also "damages" the statement.*/
   
    
 // save a copy of our canvas on the first frame so we have a clean .png
-//if (frameCount == 1){save("GD105 Spr24 EHuq a1p3 output.png");}
+if (frameCount == 1){save("GD105 Spr24 EHuq a1r3 output.png");}
 }

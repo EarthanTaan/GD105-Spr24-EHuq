@@ -71,7 +71,7 @@ void draw(){
   line(line2A.x, ht910.y, runglength.y, ht910.y);
   line(line2A.x, ht1112.y, runglength.y, ht1112.y);
   
-  //if (frameCount == 1){save("GD105 Spr24 EHuq a1p1 output.png");}
+  if (frameCount == 1){save("GD105 Spr24 EHuq a1r1 output.png");}
 
   
 }
