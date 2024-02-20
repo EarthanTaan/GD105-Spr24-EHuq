@@ -19,12 +19,24 @@ approach than trying to render the image purely in 2D.
 // Before Setup: Create a font variable, and save any Strings I wanna use
 // (like the album title probably).
 
+// Do I need to construct the chessboard book in setup or before setup? Look into this.
 // Create king and pawn shapes to call in later. These will be flat 2D icons.
 // Create the chessboard/book 3D object to call in later.
 
 // Setup: Most album covers are squares, so we'll go with that.
-// Do I need to construct the chessboard book in setup or before setup? Look into this.
+void setup(){
+  size(900, 900, P3D);
+  windowTitle("The Album Cover Piece");
+}
 
 // Draw: Bring in the chess board first so the pieces can be drawn on top.
-
-// Don't forget to save the image in a png.
+void draw(){
+  background(#FFFCE5);
+  translate(width*0.5, height*0.5);
+  rotateX(-0.75);
+  rotateY(0.80);
+  rotateZ(0.00);
+  noFill();
+  box(400, 100, 399);
+// Don't forget to save the final image in a .png
+}

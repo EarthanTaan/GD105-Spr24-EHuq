@@ -15,7 +15,7 @@ void setup(){
 //Set the size of the canvas. Let's go with square.
   size(1000, 1000); //(TIL size has to be first)
   ocra10 = loadFont("OCRAExtended-10.vlw");  
-  windowTitle("The Map Piece (WIP)");
+  windowTitle("The Map Piece");
   
 }
 
@@ -84,5 +84,5 @@ float pokewi = width*0.67;
   //text("x: "+mouseX+", y: "+mouseY, mouseX, mouseY);
   
   
-if (frameCount == 1){save("GD105 Spr24 EHuq a1r4 output WIP.png");}
+if (frameCount == 1){save("GD105 Spr24 EHuq a1r4 output.png");}
 }
