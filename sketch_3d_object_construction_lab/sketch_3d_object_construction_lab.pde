@@ -49,9 +49,13 @@ void draw() {
   background(#e291f3);
   
   translate(width*0.500, height*0.500);  
-  rotateX(0.00);
-  rotateY(0.00);
-  rotateZ(0.00);
+  rotateX(TAU*0.00);
+  rotateY(TAU*0.00);
+  rotateZ(TAU*0.00);
+// If I'm right I won't need to rotate in draw() because the objects will exist in a rotated 
+// state before they're drawn, by posessing the properties of having been rotated at creation,
+// in setup(). These rotation controls are only here in draw() for me to easily preview 
+// rotations so I can get the numbers.
   
   shape(chessbook);
 
