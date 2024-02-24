@@ -9,21 +9,23 @@ void setup() {
   tall = height*0.50;    //Book's height will also be its width, since it's a square.
   altima = createFont("Altima.otf", 60);
   textFont(altima);
+  //push();  //I don't think this did anything, but it's here to remind me that I tried it.
   
   //make constituent shapes
-  //note: each "Child" posesses its own propprietary coordinates.
+  //note: each "Child" posesses its own proprietary coordinates. (Do I not understand this principle? Is this where I'm tripping up?)
   rectMode(CENTER);
   strokeWeight(2);
 
 // COVER
-// A square, I'll add the chessboard pattern once I get the geometry working.
+// A square, I'll add a 3x3 chessboard pattern framed inside a border once I get the geometry working.
   cover = createShape(RECT, 0, 0, tall, tall);
   cover.setFill(color(150)); //placeholder color
   cover.translate(0, 0, thick); //bringing it forward by half the thickness of the book (full thickness is 100)
   
 // SPINE
-// Two parallel lines equal height to the cover, 100 pts away from each other, joined at both
+// IN THEORY: Two parallel lines equal height to the cover, 100 pts away from each other, joined at both
 //ends by parallel arcs, an equal distance left from the center as the edge of the cover.
+// CURRENTLY: Just a normal rectangle made of vertices joined by straight lines. I'll worry about the curve once I get the translations and rotations sorted out,
     spine = createShape();
       spine.beginShape();
         spine.vertex(-thick, tall*-0.5);
@@ -31,10 +33,11 @@ void setup() {
         spine.vertex(thick, tall*0.5);
         spine.vertex(-thick, tall*0.5);
       spine.endShape();
-      spine.rotateY(TAU*0.25);
-      spine.translate(tall*-0.5, 0, 0);
-    
-// Two parallel lines of equal height to the cover, 100 pts away from each other, joined at both
+      spine.rotateY(TAU*0.25);    //Flip it sideways.
+      spine.translate(tall*-0.5, 0, 0);    //Scoot to the left half the width of the book.
+
+// PAGE (the page edge)
+// Like the spine, this will eventually be two parallel lines of equal height to the cover, 100 pts away from each other, joined at both
 //ends by parallel arcs, an equal distance right from the center as the edge of the cover.
   page = createShape(); //Again this will be a curved plane rather than a single edge.
       page.beginShape();
@@ -43,9 +46,9 @@ void setup() {
         page.vertex(thick, tall*0.5);
         page.vertex(-thick, tall*0.5);
       page.endShape();    
-    page.rotateY(TAU*0.25);
-    page.rotateZ(TAU*0.25);
-    page.translate(0, tall*0.5, 0);
+    page.rotateY(TAU*0.25);    //Flip it sideways.
+    page.rotateZ(TAU*0.25);    //Spin it horizontal.
+    page.translate(0, tall*0.5, 0);    //Scoot it to the bottom of the book.
   
   //create shape group
   chessbook = createShape(GROUP);
@@ -53,10 +56,15 @@ void setup() {
     chessbook.addChild(cover);
     chessbook.addChild(spine);
     chessbook.addChild(page);
+//Now, ideally I want the book to exist in a rotated state such that when I summon it inn draw(),
+//it's instantly in the correct position and orientation, but here's where I'm getting
+//tripped up. I don't know why this screws up the shape placement.
+    chessbook.translate(width*0.50, height*0.50, 0.000);
     chessbook.rotateX(TAU*0.150);
     chessbook.rotateY(TAU*0.000);
-    chessbook.rotateZ(TAU*-0.125);
-    chessbook.translate(width*0.50, height*0.50);
+    chessbook.rotateZ(TAU*0.125);
+  //pop();  //I don't think this did anything.
+    
     
 
 }
@@ -64,11 +72,25 @@ void setup() {
 void draw() {
   background(#e291f3);
   
-  //shapeMode(CENTER);
+//The correct angle is as follows -- (as long as chessbook doesn't have any transformations
+//embedded in it.)
   //translate(width*0.500, height*0.500, 0);  
   //rotateX(TAU*0.150);
   //rotateY(TAU*0.000);
   //rotateZ(TAU*-0.125);
+  
+//What follows are neutral values to control in Tweak mode 
+//(toggle between this and the above set)
+//(These should always start at zero)
+  translate(width*0.00, height*0.00, 0);
+  rotateX(TAU*0.000);
+  rotateY(TAU*0.000);
+  rotateZ(TAU*0.000);
+  translate(width*0.000, height*0.000, 0);
+  rotateX(TAU*0.000);
+  rotateY(TAU*0.000);
+  rotateZ(TAU*0.000);
+
 
 /*
   If I'm right I won't need to rotate in draw() because the objects will exist in a rotated 
@@ -77,10 +99,11 @@ in setup(). These rotation controls are only here in draw() for me to easily pre
 rotations so I can get the numbers.
   ...So why isn't this working?
 */
-
   shape(chessbook, width*0.00, height*0.00);
   text("Final Fantasy Tactics", width*0.003, height*0.001);
   
+//Axes visualizer. (Maybe this should be at the top of draw() instead of the bottom.
+//Or maybe I should have one at the top and one at the bottom just to see.
   line(-400,0,0, 400,0,0); //X line
   line(0, -400, 0, 0, 400, 0); //Y line
   line(0, 0, -400, 0, 0, 400); //Z line
