@@ -31,22 +31,33 @@ void draw(){
   background(236);
   stroke(0);
   strokeWeight(2);
-
-  translate(width*0.50, height*0.50, 0.00);
-  rotateX(TAU*-0.07);
-  rotateY(TAU*-0.03);
-  rotateZ(TAU*0.02);
-
-
   textSize(30);
   fill(0);
+
+  translate(width*0.54, height*0.50, 0.00);
+
   line(-100,0,0, 100,0,0);
   text("X", 100, 0, 0);
+  rotateX(TAU*0.02);
+
   line(0,-100,0, 0,100,0);
   text("Y", 0, 100, 0);
+  rotateY(TAU*-0.60);
+  
   line(0,0,-100, 0,0,100);
   text("Z", 0, 0, 100);
-
-  shape(halfpipe);
-
+  rotateZ(TAU*0.01);
+  
+  PShape hp;
+  hp = createShape();
+    hp.beginShape();
+      hp.noFill();
+      hp.curveVertex(width*-0.47, height*0.28, 0.00);
+      hp.curveVertex(width*-0.24, height*-0.09, 46);
+      hp.curveVertex(width*-0.25, height*0.09, -60);
+      hp.curveVertex(width*0.93, height*1.00, 0.00);
+    hp.endShape();
+  
+  shape(hp);
+  
 }
