@@ -9,10 +9,8 @@ void setup() {
   tall = height*0.50;    //Book's height will also be its width, since it's a square.
   altima = createFont("Altima.otf", 60);
   textFont(altima);
-  //push();  //I don't think this did anything, but it's here to remind me that I tried it.
   
   //make constituent shapes
-  //note: each "Child" posesses its own proprietary coordinates. (Do I not understand this principle? Is this where I'm tripping up?)
   rectMode(CENTER);
   strokeWeight(2);
 
