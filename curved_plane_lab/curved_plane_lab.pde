@@ -1,63 +1,104 @@
-PShape halfpipe, topcap, botcap, sides;
+float thOff, htOff, top, bot, left, right, front, back, bend;
+PShape spine, page, board, book;
 
 void setup(){
-  size(500, 500, P3D);
+  size(800, 800, P3D);
+  fill(#AABFDB);        //placeholder color
+  thOff = 30.00;        //book thickness offset
+  htOff = height*0.25;  //book height offset (doubles as width offset)
+  top = -htOff;
+  bot = htOff;
+  left = -htOff;
+  bend = left-15;
+  right = htOff;
+  front = thOff;
+  back = -thOff;
+
+//This creates the book's spine in the correct place.
+  spine = createShape();
+    spine.beginShape(QUAD_STRIP);
+      spine.vertex(left, top, front);
+      spine.vertex(left, bot, front);
+      spine.vertex(bend, top, front-20.00);
+      spine.vertex(bend, bot, front-20.00);
+      spine.vertex(bend, top, back+20.00);
+      spine.vertex(bend, bot, back+20.00);
+      spine.vertex(left, top, back);
+      spine.vertex(left, bot, back);    
+    spine.endShape(CLOSE);
+
+//This creates the page-edge, but is copied from the spine geometry, so I have to translate
+//it into position.
+  page = createShape();  //page
+    page.beginShape(QUAD_STRIP);
+      page.vertex(left, top, front);
+      page.vertex(left, bot, front);
+      page.vertex(bend, top, front-20.00);
+      page.vertex(bend, bot, front-20.00);
+      page.vertex(bend, top, back+20.00);
+      page.vertex(bend, bot, back+20.00);
+      page.vertex(left, top, back);
+      page.vertex(left, bot, back);    
+    page.endShape(CLOSE);
+    page.rotateZ(TAU*0.25);  //flip it up
+    page.translate(0, bot*2, 0);  //drop it down
   
-  topcap = createShape(
-    ARC, width*0.00, height*0.00, width*0.50, height*0.50, TAU*0.40, TAU*0.60, OPEN);
-    topcap.translate(0, 0, -50);
-    
-  botcap = createShape(
-    ARC, width*0.00, height*0.00, width*0.50, height*0.50, TAU*0.40, TAU*0.60, OPEN);
-    botcap.translate(0, 0, 50);
+  rectMode(CENTER);
+  board = createShape(RECT, 0, 0, left*2, htOff*2);
+  board.translate(0, 0, front);
   
-  sides = createShape();
-    sides.beginShape(LINES);
-      sides.vertex(0, height*-0.130, -50);
-      sides.vertex(0, height*-0.130, 50);
-      sides.vertex(0, height*0.130, 50);
-      sides.vertex(0, height*0.130, -50);
-    sides.endShape();
-    sides.translate(-100, 0, 0);
+  book = createShape(GROUP);
+    book.addChild(board);
+    book.addChild(spine);
+    book.addChild(page);
+
   
-  halfpipe = createShape(GROUP);
-  halfpipe.addChild(topcap);
-  halfpipe.addChild(botcap);
-  halfpipe.addChild(sides);
-  halfpipe.rotateX(TAU*0.25);
 }
 
 void draw(){
-  background(236);
-  stroke(0);
-  strokeWeight(2);
-  textSize(30);
-  fill(0);
-
-  translate(width*0.54, height*0.50, 0.00);
-
-  line(-100,0,0, 100,0,0);
-  text("X", 100, 0, 0);
-  rotateX(TAU*0.02);
-
-  line(0,-100,0, 0,100,0);
-  text("Y", 0, 100, 0);
-  rotateY(TAU*-0.60);
+  background(100);
+  lights();
+  translate(width*0.50, height*0.50);
+  push();
+  rotateX(TAU*0.15);
+  rotateY(TAU*0.00);
+  rotateZ(TAU*-0.125);
   
-  line(0,0,-100, 0,0,100);
-  text("Z", 0, 0, 100);
-  rotateZ(TAU*0.01);
+  shape(book);
+  pop();
   
-  PShape hp;
-  hp = createShape();
-    hp.beginShape();
-      hp.noFill();
-      hp.curveVertex(width*-0.47, height*0.28, 0.00);
-      hp.curveVertex(width*-0.24, height*-0.09, 46);
-      hp.curveVertex(width*-0.25, height*0.09, -60);
-      hp.curveVertex(width*0.93, height*1.00, 0.00);
-    hp.endShape();
-  
-  shape(hp);
+  textAlign(CENTER);
+  text("Album Title", 0, height*-0.40);
+
   
 }
+
+/* End of Code. What follows is the Code Archive
+  fill(#AABFDB);
+  translate(width*0.50, height*0.50);
+  
+  thOff = 32.33;
+  htOff = height*0.25; 
+  top = -htOff;
+  bot = htOff;
+  left = width*-0.25;
+  bend = left-15;
+  right = width*0.50;
+  front = thOff;
+  back = -thOff;
+
+  beginShape(QUAD_STRIP);
+    vertex(left, top, front);
+    vertex(left, bot, front);
+
+    vertex(bend, top, front-20.00);
+    vertex(bend, bot, front-20.00);
+
+    vertex(bend, top, back+20.00);
+    vertex(bend, bot, back+20.00);
+
+    vertex(left, top, back);
+    vertex(left, bot, back);
+    
+  endShape(CLOSE);
+*/
