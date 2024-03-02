@@ -18,7 +18,7 @@
 
 // Before Setup: Create variables
 float thOff, htOff, top, bot, left, right, front, back, bend;
-PShape spine, page, board, book;
+PShape spine, page, board, backcover, book;
 PFont altima;
 String title, credits;
 
@@ -34,8 +34,8 @@ void setup() {
   title = new String("Final Fantasy Tactics");
   credits = new String("Hitoshi Sakimoto and Masaharu Iwata");
 
-  noStroke();  //start copying from here <-------<<<<<
-  fill(#AABFDB);        //placeholder color
+  noStroke();
+  fill(#771A12);
   thOff = 50.00;        //book thickness offset
   htOff = height*0.25;  //book height offset (doubles as width offset)
   top = -htOff;
@@ -73,33 +73,56 @@ void setup() {
   page.vertex(left, bot, back);
   page.endShape(CLOSE);
   page.rotateZ(TAU*0.25);  //flip it up
-  page.translate(0, bot*2, 0);  //drop it down
+  page.translate(0, bot*2-15, 0);  //drop it down
 
   rectMode(CENTER);
   board = createShape(RECT, 0, 0, left*2, htOff*2);
   board.translate(0, 0, front);
+  
+  backcover = createShape();
+  backcover = createShape(RECT, 0, 0, left*2, htOff*2);
+  backcover.translate(0, 0, -front);
 
   book = createShape(GROUP);
   book.addChild(board);
   book.addChild(spine);
   book.addChild(page);
+  book.addChild(backcover);
 
 }
 
 // Draw: Bring in the chess board first so the pieces can be drawn on top.
 void draw() {
-  background(#FFFCE5);
+  background(#D4CBAC);
   lights();
   translate(width*0.50, height*0.50);
-  push();
-  rotateX(TAU*0.15);
+  push();  //save centered origin
+    
+  rotateX(TAU*0.15);  //spin into position for book
   rotateY(TAU*0.00);
   rotateZ(TAU*-0.125);
 
   shape(book);
-  pop();
-
+  
+  //white square(s)
+  fill(255);
+  translate(0, 0, front+0.01);
+  square(0, 0, width*0.332);
+  
+  //black squares
+  float bsq = width*0.111; //black square size
+  fill(0);
+  translate(0, 0, 0.01);
+  square(-100, 0.0, bsq);
+  square(100, 0.0, bsq);
+  square(0.0, 100, bsq);
+  square(0.0, -100, bsq);
+   
+  pop();  //rescenter origin, un-rotate
   textAlign(CENTER);
-  text("Album Title", 0, height*-0.40);
+  text(title, 0, height*-0.40);
+  text(credits, 0, height*0.40);
+  
   // Don't forget to save the final image in a .png
+  
 }
