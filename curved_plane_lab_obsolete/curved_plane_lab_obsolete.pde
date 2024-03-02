@@ -3,8 +3,9 @@ PShape spine, page, board, book;
 
 void setup(){
   size(800, 800, P3D);
+  noStroke();  //start copying from here <-------<<<<<
   fill(#AABFDB);        //placeholder color
-  thOff = 30.00;        //book thickness offset
+  thOff = 50.00;        //book thickness offset
   htOff = height*0.25;  //book height offset (doubles as width offset)
   top = -htOff;
   bot = htOff;
@@ -19,10 +20,10 @@ void setup(){
     spine.beginShape(QUAD_STRIP);
       spine.vertex(left, top, front);
       spine.vertex(left, bot, front);
-      spine.vertex(bend, top, front-20.00);
-      spine.vertex(bend, bot, front-20.00);
-      spine.vertex(bend, top, back+20.00);
-      spine.vertex(bend, bot, back+20.00);
+      spine.vertex(bend, top, front-30.00);
+      spine.vertex(bend, bot, front-30.00);
+      spine.vertex(bend, top, back+30.00);
+      spine.vertex(bend, bot, back+30.00);
       spine.vertex(left, top, back);
       spine.vertex(left, bot, back);    
     spine.endShape(CLOSE);
@@ -33,10 +34,10 @@ void setup(){
     page.beginShape(QUAD_STRIP);
       page.vertex(left, top, front);
       page.vertex(left, bot, front);
-      page.vertex(bend, top, front-20.00);
-      page.vertex(bend, bot, front-20.00);
-      page.vertex(bend, top, back+20.00);
-      page.vertex(bend, bot, back+20.00);
+      page.vertex(bend, top, front-30.00);
+      page.vertex(bend, bot, front-30.00);
+      page.vertex(bend, top, back+30.00);
+      page.vertex(bend, bot, back+30.00);
       page.vertex(left, top, back);
       page.vertex(left, bot, back);    
     page.endShape(CLOSE);
@@ -56,7 +57,7 @@ void setup(){
 }
 
 void draw(){
-  background(100);
+  background(0);
   lights();
   translate(width*0.50, height*0.50);
   push();
