@@ -23,9 +23,8 @@ PFont altima;
 String title, credits;
 PImage black_marble, leather, white_marble;
 
-  // Setup: Most album covers are squares, so we'll go with that.
-  // Create king and pawn shapes to call in later. These will be flat 2D icons.
-  // Create the chessboard/book 3D object to call in later.
+// Setup: Most album covers are squares, so we'll go with that.
+// Create the chessboard/book 3D object to call in draw().
 
 void setup() {
   size(900, 900, P3D);
@@ -40,9 +39,10 @@ void setup() {
   textureMode(NORMAL);
   rectMode(CENTER);
 
+//book dimensions
   noStroke();
-  whsqOff = 150.0;
-  blsqOff = 50.0;
+  whsqOff = 150.0;      //white square offset
+  blsqOff = 50.0;       //black square offset
   thOff = 50.00;        //book thickness offset
   htOff = height*0.25;  //book height offset (doubles as width offset)
   top = -htOff;
@@ -67,7 +67,7 @@ void setup() {
       spine.vertex(left, bot, back, 0, 1);
     spine.endShape(CLOSE);
 
-  //This creates the page-edge, but is copied from the spine geometry, so I have to translate
+  //The following creates the page-edge, but is copied from the spine geometry, so I have to translate
   //it into position.
   
   fill(255);
@@ -85,8 +85,6 @@ void setup() {
   page.rotateZ(TAU*0.25);  //flip it up
   page.translate(0, bot*2-15, 0);  //drop it down
 
-  //board = createShape(RECT, 0, 0, left*2, htOff*2);
-  //board.translate(0, 0, front);
   board = createShape();
     board.beginShape();
       board.texture(leather);
@@ -101,6 +99,7 @@ void setup() {
   backcover = createShape(RECT, 0, 0, left*2, htOff*2);
   backcover.translate(0, 0, -front);
   
+//chessboard pattern. One large white square and 4 smaller black squares. Black squares are named after their board ID.
   whsq = createShape();
     whsq.beginShape();
       whsq.texture(white_marble);
@@ -150,6 +149,7 @@ void setup() {
     A2.endShape();
   A2.translate(-100, 0, 0);
 
+//assemble the book
   book = createShape(GROUP);
   book.addChild(board);
   book.addChild(spine);
@@ -163,23 +163,27 @@ void setup() {
 
 }
 
-// Draw: Bring in the chess board first so the pieces can be drawn on top.
 void draw() {
-  background(#e3d6ae);
+  background(#e3d6ae);  //color-picked from the game's dialogue box bg
   translate(width*0.50, height*0.50);
   push();  //save centered origin
-  ambientLight(175, 175, 175);
-  directionalLight(205, 205, 205, 0, 1, 0);
+  ambientLight(175, 175, 175);  //needed to illuminate sides of book
+  directionalLight(205, 205, 205, 0, 1, 0);  //bright light shining down from above for a harsh look
     
   rotateX(TAU*0.15);  //spin into position for book
   rotateY(TAU*0.00);
   rotateZ(TAU*-0.125);
 
-  shape(book);
+  shape(book);  //call in fully formed book from setup()
   pop();  //rescenter origin, un-rotate
   push();  //re-save
   
-  //crown dimensions
+/*For the chess-piece icons, I found it more efficient to create them entirely within draw() 
+so that I could make adjustments, rather than trying to build them in setup() as I did with the 
+book - because introducing textures to the 3d object made the program take significantly longer
+to begin running, so I started wanting to get as much work done in one Tweak-run as possible.
+*/
+  //crown dimensions: the X offsets and Y coords for the centerpoint, zeniths, right&left points, and base
   int ctrPt, zenXOff, zenY, RLptXOff, RLptY, baseXOff, baseY;
   ctrPt = -100;
   zenXOff = 18;
@@ -237,13 +241,13 @@ void draw() {
   translate(0, -22, 258.5);
   fill(#A884F7);
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(2);  //needs an outline to pop
   triangle(0, -40, 11, 0, -11, 0);
   translate(0, 0, 0.53);
   circle(0, -35, 20);
   translate(0, 0, 0.53);
   noStroke();
-  circle(0, -25.74, 6.53);
+  circle(0, -25.74, 6.53); //hide the overlapping outline
   
 
 
@@ -257,6 +261,6 @@ void draw() {
   text(credits, 0, height*0.45);
     
   // Don't forget to save the final image in a .png
-  if (frameCount == 1){save("GD105 Spr24 EHuq a1r4 output.png");}
+  if (frameCount == 1){save("GD105 Spr24 EHuq a1r5 output.png");}
   
 }
