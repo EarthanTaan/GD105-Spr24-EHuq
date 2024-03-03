@@ -234,17 +234,7 @@ void draw() {
   push(); //re-save
   
 //Ramza Pawn
-  translate(0, -22, 258.5);
-  fill(#A884F7);
-  stroke(0);
-  strokeWeight(2);
-  triangle(0, -40, 11, 0, -11, 0);
-  translate(0, 0, 0.53);
-  circle(0, -35, 20);
-  translate(0, 0, 0.53);
-  noStroke();
-  circle(0, -25.74, 6.53);
-  
+  //fill(#A884F7);
 
 
   pop();  //restore centered angle for what follows
@@ -257,6 +247,5 @@ void draw() {
   text(credits, 0, height*0.45);
     
   // Don't forget to save the final image in a .png
-  if (frameCount == 1){save("GD105 Spr24 EHuq a1r4 output.png");}
   
 }
