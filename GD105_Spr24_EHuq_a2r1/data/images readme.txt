@@ -1,0 +1,1 @@
+All images were downloaded and edited for free from Pexels.com, remove.bg, and Photopea.com
