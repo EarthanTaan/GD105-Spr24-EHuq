@@ -43,9 +43,15 @@ void draw(){
   imageMode(CENTER);
   image(hat, 0,0);
   
+  resetMatrix();
+  translate(width*0.5, height*0.5);
+  push();
+  
   //flipper
-  image(flip, 0, 0);
+  rotate(0.32);
+  scale(1.63);
+  image(flip, width*-0.14, height*0.00);
   
-  
+  pop();
   //if (frameCount == 1){save("GD105 Spr24 EHuq a2r1 output.png");}
 }
