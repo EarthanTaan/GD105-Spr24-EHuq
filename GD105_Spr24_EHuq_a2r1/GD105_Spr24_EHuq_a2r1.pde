@@ -134,6 +134,8 @@ void draw(){
   image(sk8, 0, 0);
   pop();
   
+  //you know, I think I can call it good right there actually, I like how this looks.
+  
   
   if (frameCount == 1){save("GD105 Spr24 EHuq a2r1 output.png");}
 }
