@@ -1,32 +1,40 @@
-float rad, theta, wig;
-PVector mid = new PVector();
+PVector triStart = new PVector();
+PVector sizenpoint = new PVector();
+PVector triEnd = new PVector();
 
 void setup(){
-  size(500, 500);
-  background(#FFD379);
-  //wig = 0;
-  //frameRate(3);
+  size(900, 900);
+  //background(#FFD379);
 }
 
 void draw(){
-  translate(width/2, height/2);
+  //background(#FFD379);
   strokeWeight(2);
   stroke(0);
-  fill(255);
+  noFill();
   
-  for(frameCount = 0; frameCount == 300;){
-    wig = lerp(-80, 100, 2);
-  }
-  mid.set(0,0);
-  rad = width * 0.50;
-  theta = TAU / wig;
+  triStart.set(0.10, 0.50);  //starting position of triangle spirograph arc
+  triEnd.set(0.90, 0.50);  //end point for spirograph arc (hopefully)
+  sizenpoint.set(0.05, 0.75);  //size and orientation of initial triangle
   
+  //for(float i = frameCount * 0.01; i > 900; ){
+  triStart.x = lerp(triStart.x, triEnd.x, 0.10);
+  triStart.y = lerp(triStart.y, triEnd.y, 0.10);
+  spiroTri(triStart.x, triStart.y, sizenpoint.x, sizenpoint.y);
+  //}
   
+}
+
+//draw an equilateral triamgle around a central point
+void spiroTri(float midX, float midY, float rad, float yoke){
+  float eqDist = TAU / 3;
+  rad *= width;  //radius
+  yoke *= TAU;  //tripoint prime, from which the other two will be derived
+  midX *= width;  //X of middle of triangle 
+  midY *= height;  //Y of middle of triangle
   triangle(
-    mid.x, mid.y - rad * sin(theta),    //pt 1 (pointing up)
-    mid.x + rad * cos(theta), mid.y + rad * sin(theta),    //pt 2
-    mid.x - rad * cos(theta), mid.y + rad * sin(theta)   //pt 3
+    midX + rad * cos(yoke), midY + rad * sin(yoke),  //Tripoint Prime
+    midX + rad * cos(yoke + eqDist), midY + rad * sin(yoke + eqDist),  //pt 2
+    midX + rad * cos(yoke - eqDist), midY + rad * sin(yoke - eqDist)  //pt 3
   );
-  
-  
 }
