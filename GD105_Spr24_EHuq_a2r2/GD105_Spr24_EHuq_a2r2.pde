@@ -1,35 +1,43 @@
-/*  Not gonna lie, I have no plan for this one. I'm just gonna throw some paint at the
-canvas and see where it takes me.
-*/
-PShape tri, sqr, star;
-PVector anchor;
-float x, y, rotation, orbit;
+PVector triStart = new PVector();
+PVector sizenpoint = new PVector();
+PVector triEnd = new PVector();
+color from, to;
 
 void setup(){
-  size(500, 500);  //let's try a little one.
-  background(#1FA7FF);
-  
-  anchor = new PVector(x, y);
-  tri = createShape(TRIANGLE, anchor.x + sin(1.0), anchor.y + sin(0.5));
-  
+  size(900, 900);
+  background(50);
+  noLoop();
+  strokeWeight(1);
+  noFill();
 }
 
 void draw(){
-  stroke(#FFF14D);
-  
-  spiro(23, 23, 16, 0.12, sqr);
-  
-  
+  translate(width/2, height/2);
+
+  for(int i = 0; i<10; i++){
+    from = color(random(255), random(255), random(255));
+    to = color(random(255), random(255), random(255));
+    stroke(lerpColor(from, to, i));
+    spiroTri(random(-0.50,0.50), random(-0.50,0.50), random(0.01, 0.25), random(0.01, 1.00));
+  }
+//if (frameCount == 1){save("GD105 Spr24 EHuq a2r2 output.png");}
 }
 
-/*How about a function that does like a spirograph thing. Draw a square, then draw a slightly
-rotated square centered on a point along an invisible circle, and just keep doing that
-until the circle is complete. */
-void spiro(float x, float y, float rotation, float orbit, PShape shape){
-  for(int i = 0; i < 360; i += 1){
-    shape(shape, x, y);
-    translate(width * orbit, height * orbit);
-    rotate(TAU * rotation);
-    
+//draw an equilateral triamgle around a central point
+void spiroTri(float midX, float midY, float rad, float yoke){
+  float eqDist = TAU / 3;
+    rad *= width;  //radius
+    yoke *= TAU;  //tripoint prime, from which the other two will be derived
+    midX *= width;  //X of middle of triangle 
+    midY *= height;  //Y of middle of triangle
+  for(int i = 1; i<50; i++){    //draw many such triangles in an arc from the starting point
+    triangle(
+      midX + rad * cos(yoke), midY + rad * sin(yoke),  //Tripoint Prime
+      midX + rad * cos(yoke + eqDist), midY + rad * sin(yoke + eqDist),  //pt 2
+      midX + rad * cos(yoke - eqDist), midY + rad * sin(yoke - eqDist)  //pt 3
+    );
+    midX += width*0.015 * cos(yoke*0.25);
+    midY += height*0.015 * sin(yoke*0.25);
+    yoke += 0.75;
   }
 }
