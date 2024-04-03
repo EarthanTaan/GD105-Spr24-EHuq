@@ -15,7 +15,7 @@ void setup() {
 void draw() {
   
   translate(width/2, height/2);
-  background(0);  //note: change this to lerp between black and red when way too close
+  background(0);  //note: change this to lerp between black and red when too close
   shapeMode(CENTER);
   noStroke();
   fill(#D30F0F);
@@ -30,7 +30,8 @@ void draw() {
 
 //Animate the heartbeat by moving the control points with sin/cos but only within a small range.
   constrain(hBeat, cos(0.33), sin(0.37));
-  hBeat = lerp(TAU*0.33, TAU*0.37, cos(engine));
+  //hBeat = lerp(TAU*0.33, TAU*0.37, cos(engine));
+  hBeat = TAU/3;    //temporary halting of animation, the real hBeat is above.
   
 //draw the heart
 //Copied my equilateral triangle formula from previous assignment.
