@@ -41,5 +41,6 @@ void draw() {
     hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)  //pt 3
     );
 
-  println(hRate);
+//readouts:
+  println("Heartrate: "+hRate+", Proximity: "+prox+", Engine: "+engine);
 }  //end of draw() block
