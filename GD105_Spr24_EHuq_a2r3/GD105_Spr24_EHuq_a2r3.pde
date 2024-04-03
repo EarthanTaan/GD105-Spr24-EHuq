@@ -1,9 +1,10 @@
 /* I'm going try to make a heart-shape which beats faster the closer the mouse gets to it,
  and if I can pull that off, I want to make it shatter/stop if clicked on. Wish me luck.*/
 
-float hBig, hBeat, hPoint, hRate, prox;
+float hBig, hBeat, hPoint, hRate, prox, engine;
 //h = heart; Beat, Rate = offset and speed of beat anim.; prox = proximity of mouse to heart
 PShape heart;
+
 
 void setup() {
   windowTitle("The Mouse Reactive Piece");
@@ -12,6 +13,7 @@ void setup() {
 } //end of setup() block
 
 void draw() {
+  
   translate(width/2, height/2);
   background(0);  //note: change this to lerp between black and red when way too close
   shapeMode(CENTER);
@@ -22,11 +24,13 @@ void draw() {
 //prox = distance from mouse to center; hRate = reverse-map prox to 0-1 (switch hi/lo)
   prox = dist(mouseX, mouseY, width/2, height/2);
   hRate = norm(prox, width, 0);
+  engine += hRate * 0.5;
   hBig = 150;
+  hPoint = TAU*0.25;  //pointy bit goes down
+
 //Animate the heartbeat by moving the control points with sin/cos but only within a small range.
   constrain(hBeat, cos(0.33), sin(0.37));
-  hBeat = lerp(TAU*0.33, TAU*0.37, cos(frameCount * hRate));
-  hPoint = TAU*0.25;  //pointy bit goes down
+  hBeat = lerp(TAU*0.33, TAU*0.37, cos(engine));
   
 //draw the heart
 //Copied my equilateral triangle formula from previous assignment.
