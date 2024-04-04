@@ -1,13 +1,13 @@
 /* I'm going try to make a heart-shape which beats faster the closer the mouse gets to it,
  and if I can pull that off, I want to make it shatter/stop if clicked on. Wish me luck.*/
 
-float hBig, hBeat, hPoint, hRate, prox, engine;
+float hBig, hBeat, hPoint, hRate, buttWide, buttTall, prox, engine;
 //h = heart; Beat, Rate = offset and speed of beat anim.; prox = proximity of mouse to heart
 PShape heart;
-
+PVector hShoulderL, hShoulderR, buttCrack/*listen it is what it is*/;
 
 void setup() {
-  windowTitle("The Mouse Reactive Piece");
+  windowTitle("The Mouse Reactive Piece, or The Terrifying Ordeal");
   size(1000, 1000);  // I was originally going to do a small one, but I'll need ample space around the heart to communicate the effect. (But my screen's not very big)
 
 } //end of setup() block
@@ -27,6 +27,8 @@ void draw() {
   engine += hRate * 0.5;
   hBig = 150;
   hPoint = TAU*0.25;  //pointy bit goes down
+  buttWide = hBig * 0.915;
+  buttTall = hBig * 1.20;
 
 //Animate the heartbeat by moving the control points with sin/cos but only within a small range.
   constrain(hBeat, cos(0.33), sin(0.37));
@@ -41,8 +43,11 @@ void draw() {
     hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)  //pt 3
     );
 //draw the butt of the heart (archaeologists of ancient rome say it's a butt, it's not my fault)
-  arc(0, 0, hBig/2, hBig/4, PI, TAU);
+  arc(-61, -74, buttWide, buttTall, PI, TAU);
+  arc(61, -74, buttWide, buttTall, PI, TAU);
+  
 
 //readouts:
   println("Heartrate: "+hRate+", Proximity: "+prox+", Engine: "+engine);
-}  //end of draw() block
+
+/*end of draw loop*/ }
