@@ -40,6 +40,8 @@ void draw() {
     hBig * cos(hPoint + hBeat), hBig * sin(hPoint + hBeat), //pt 2
     hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)  //pt 3
     );
+//draw the butt of the heart (archaeologists of ancient rome say it's a butt, it's not my fault)
+  arc(0, 0, hBig/2, hBig/4, PI, TAU);
 
 //readouts:
   println("Heartrate: "+hRate+", Proximity: "+prox+", Engine: "+engine);
