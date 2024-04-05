@@ -43,8 +43,8 @@ void draw() {
     hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)  //pt 3
     );
 //draw the butt of the heart (archaeologists of ancient rome say it's a butt, it's not my fault)
-  arc(-61, -74, buttWide, buttTall, PI, TAU);
-  arc(61, -74, buttWide, buttTall, PI, TAU);
+  curve(startCtrlX, startCtrlY, 1x, 1y, 2x, 2y, endCtrlX, endCtrlY);
+  curve();
   
 
 //readouts:
