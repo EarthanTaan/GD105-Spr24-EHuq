@@ -1,7 +1,7 @@
 /* I'm going try to make a heart-shape which beats faster the closer the mouse gets to it,
  and if I can pull that off, I want to make it shatter/stop if clicked on. Wish me luck.*/
 
-float hBig, hBeat, hPoint, lHip, rHip, hRate, prox, engine;
+float hBig, hBeat, hPoint, lHip, rHip, hRate, prox, engine, buttDepth, buttWideOffset;
 //h = heart; Beat, Rate = offset and speed of beat anim.; prox = proximity of mouse to heart
 //lHip is left hip
 PShape heart;
@@ -44,8 +44,8 @@ void draw() {
   hShoulderL.set(hBig * cos(hPoint + hBeat), hBig * sin(hPoint + hBeat));
   hShoulderR.set(hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat));
   buttCrack.set(lerp(hShoulderL.x, hShoulderR.x, 0.5), -hBig/2 * hBeat/2 + 35);
-  float buttDepth = height * 0.75;
-  float buttWideOffset = width * 0.37;
+  buttDepth = height * 0.75;
+  buttWideOffset = width * 0.37;
   LCP1.set(buttWideOffset, buttDepth);
   LCP2.set(-buttWideOffset, buttDepth);
   RCP1.set(-buttWideOffset, buttDepth);
