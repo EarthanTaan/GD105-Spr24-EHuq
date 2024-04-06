@@ -59,10 +59,10 @@ void draw() {
     hShoulderR.x, hShoulderR.y  //pt 3
     );
 //draw the butt of the heart (archaeologists of ancient rome say it's a butt, it's not my fault)
-  //visualize the control points
-  circle(LCP1.x, LCP1.y, 50); circle(LCP2.x, LCP2.y, 50);
+  //visualize the control points (no longer necessary) (they ended up being off-screen anyway)
+  //circle(LCP1.x, LCP1.y, 50); circle(LCP2.x, LCP2.y, 50);
+  //circle(RCP1.x, RCP1.y, 50); circle(RCP2.x, RCP2.y, 50);
   curve(LCP1.x, LCP1.y, hShoulderL.x, hShoulderL.y, buttCrack.x, buttCrack.y, LCP2.x, LCP2.y);
-  circle(RCP1.x, RCP1.y, 50); circle(RCP2.x, RCP2.y, 50);
   curve(RCP1.x, RCP1.y, hShoulderR.x, hShoulderR.y, buttCrack.x, buttCrack.y, RCP2.x, RCP2.y);
   
 
