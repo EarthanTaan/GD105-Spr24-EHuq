@@ -27,7 +27,7 @@ void draw() {
   background(0);  //note: change this to lerp between black and red when too close
   //Change the background a warning flash when too close
   if(prox < 100){
-    background(lerpColor(#000000, #5E0000, cos(engine * 0.20)));
+    background(lerpColor(#000000, #5E0000, abs(sin(engine * 0.15))));
   }
   if(broke == true){
     background(255);
