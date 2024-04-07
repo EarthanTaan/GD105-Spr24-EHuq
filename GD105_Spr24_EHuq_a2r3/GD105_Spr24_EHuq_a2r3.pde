@@ -6,6 +6,7 @@ float hBig, hBeat, hPoint, lHip, rHip, hRate, prox, engine, buttDepth, buttWideO
 //lHip is left hip
 PShape heart;
 PVector hShoulderL, hShoulderR, buttCrack, LCP1, LCP2, RCP1, RCP2/*listen it is what it is*/;
+boolean broke = false;
 
 void setup() {
   windowTitle("The Mouse Reactive Piece, or The Terrifying Ordeal");
@@ -24,6 +25,13 @@ void draw() {
   
   translate(width/2, height/2);
   background(0);  //note: change this to lerp between black and red when too close
+  //Change the background a warning flash when too close
+  if(prox < 100){
+    background(lerpColor(#000000, #5A0000, sin(engine * 0.25)));
+  }
+  if(broke == true){
+    background(255);
+  }
   shapeMode(CENTER);
   noStroke();
   fill(#D30F0F);
@@ -32,8 +40,8 @@ void draw() {
 //prox = distance from mouse to center; hRate = reverse-map prox to 0-1 (switch hi/lo)
   prox = dist(mouseX, mouseY, width/2, height/2);
   hRate = norm(prox, width, 0);
-  engine += hRate * 0.5;
-  hBig = 150;
+  engine += hRate * 0.40;
+  hBig = 80;
   hPoint = TAU*0.25;  //pointy bit goes down
 
   //Animate the heartbeat by moving the  with sin/cos but only within a small range.
@@ -64,10 +72,30 @@ void draw() {
   //circle(RCP1.x, RCP1.y, 50); circle(RCP2.x, RCP2.y, 50);
   curve(LCP1.x, LCP1.y, hShoulderL.x, hShoulderL.y, buttCrack.x, buttCrack.y, LCP2.x, LCP2.y);
   curve(RCP1.x, RCP1.y, hShoulderR.x, hShoulderR.y, buttCrack.x, buttCrack.y, RCP2.x, RCP2.y);
-  
+
 
 //readouts:
   println("Heartrate: "+hRate+", Proximity: "+prox+", Engine: "+engine);
   println("Triangle side length: "+dist(hBig * cos(hPoint + hBeat), hBig * sin(hPoint + hBeat), hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)));
 
+  if(broke == true){
+    noLoop();
+    noFill();
+    stroke(255);
+    strokeWeight(6);
+    beginShape();
+      vertex(0, height * -0.14);
+      vertex(width * -0.04, height * -0.06);
+      vertex(width * 0.02, height * -0.03);
+      vertex(0, height * 0.09);
+    endShape();
+  }
+
 /*end of draw loop*/ }
+
+//break heart
+void mousePressed(){
+  if(prox < 100){
+    broke = true;
+  }
+}
