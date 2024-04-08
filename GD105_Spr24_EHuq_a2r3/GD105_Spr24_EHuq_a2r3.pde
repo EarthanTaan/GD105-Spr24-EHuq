@@ -9,7 +9,7 @@ PVector hShoulderL, hShoulderR, buttCrack, LCP1, LCP2, RCP1, RCP2/*listen it is 
 boolean broke = false;
 
 void setup() {
-  windowTitle("The Mouse Reactive Piece, or The Terrifying Ordeal");
+  windowTitle("The Mouse Reactive Piece, or The Mortifying Ordeal");
   size(1000, 1000);  // I was originally going to do a small one, but I'll need ample space around the heart to communicate the effect. (But my screen's not very big)
   hShoulderL = new PVector();
   hShoulderR = new PVector();
