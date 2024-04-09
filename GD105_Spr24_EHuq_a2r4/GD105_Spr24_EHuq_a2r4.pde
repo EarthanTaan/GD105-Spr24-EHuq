@@ -1,21 +1,17 @@
 /* I will attempt to make a simple grandfather-clock type thing but it's like, old and posessed
 or something. idk we'll see. */
-int interval;
+int interval, engine, animLoop;
+float swing;
 PShape clock, body, head, face, sHand, hHand, foot, pendulum, stalk;
+PVector pendulous, clockCtr, handle;
 
 void setup(){
   size(250, 500);  //since this is meant to be a gif it should probably be on the smaller side.  
   frameRate(50);
   
-  clock = createShape(GROUP);
-  //body 
-  //head
-  //face
-  //sHand
-  //hHand
-  //foot
-  //pendulum
-  //stalk
+  pendulous = new PVector();
+  clockCtr = new PVector();
+  handle = new PVector();
   
 /*end of setup() block*/}
 
@@ -37,21 +33,39 @@ void draw(){
 //drawing the clock
   translate(width/2, height/2);
   rectMode(CENTER);
+  color oak = #57251C;    //oak chassis
+  color oakOut = #180806;    //An outline to make the star pop
+  color iso = #69352c;  //the "top" surface gets more direct light
+  color brass = #F0EB52;
+  engine++;
   
-  fill(#57251C);  //oak chassis
-  stroke(#180806);  //An outline to make the star pop
-  strokeWeight(2);
+  handle.set(0, 45);  //a handle on which to hang the clock entyre 
+  clockCtr.set(handle.x, handle.y - 122);  //the middle of the clock-face
+  
   //iso-foot
-  rect(0, 130, 75, 30);
+  fill(oak);
+  stroke(oakOut);
+  strokeWeight(2);
+  fill(iso);
+  rect(handle.x, handle.y + 85, 75, 30);
   
   //body interior
   fill(0);
-  rect(0, 45, 50, 170);
-  //pendulum
+  rect(handle.x, handle.y, 50, 170);
   
-  //pendulum cover
-  fill(#57251C);
-  PVector handle = new PVector(0, 45);
+  //pendulum  -this is gonna be the hard part
+  fill(brass);
+  stroke(brass);
+  strokeWeight(3);
+  float pLong = dist(clockCtr.x, clockCtr.y, clockCtr.x, clockCtr.y + 77);
+  swing = lerp(0.25, 0.22, sin(frameCount * 0.1));
+  
+  line(clockCtr.x, clockCtr.y, pLong * cos(TAU * swing), pLong * sin(TAU * swing));
+  circle(pLong * cos(TAU * swing), pLong * sin(TAU * swing), 15);
+  
+  //body exterior
+  fill(oak);
+  stroke(oakOut);
   int doorXoff, doorYoff, windXoff, windYoff;
   doorXoff = 25;
   doorYoff = 85;
@@ -62,6 +76,7 @@ void draw(){
   vertex(handle.x + doorXoff, handle.y - doorYoff);  //top right
   vertex(handle.x + doorXoff, handle.y + doorYoff);  //bottom right
   vertex(handle.x -doorXoff, handle.y + doorYoff);  //bottom left
+  vertex(handle.x - doorXoff, handle.y - doorYoff);  //top left
   beginContour();                                   //contour goes widdershins
   vertex(handle.x - windXoff, handle.y - windYoff - 7);  //top left
   vertex(handle.x - windXoff, handle.y + windYoff);  //bottom left
@@ -71,15 +86,21 @@ void draw(){
   endShape();
   
   //iso-head
-  square(0, -97, 75);
+  fill(iso);
+  square(0, -90, 75);
   //head
-  square(0, -77, 75);
+  fill(oak);
+  square(handle.x, clockCtr.y, 75);
   //foot
   rect(0, 150, 75, 30);
   //face
   fill(#F5EAD6);
   strokeWeight(0.5);
-  circle(0, -77, 55);
+  circle(clockCtr.x, clockCtr.y, 55);
+  
+  
+ println("Swing: "+swing);
+ println("animLoop: "+animLoop);
 
   //sHand
   //hHand
