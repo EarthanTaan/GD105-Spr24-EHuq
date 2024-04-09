@@ -1,9 +1,10 @@
 /* I will attempt to make a simple grandfather-clock type thing but it's like, old and posessed
 or something. idk we'll see. */
-int interval, engine, animLoop;
-float swing;
+int interval, splice;
+float swing, engine, pLong;
 PShape clock, body, head, face, sHand, hHand, foot, pendulum, stalk;
 PVector pendulous, clockCtr, handle;
+
 
 void setup(){
   size(250, 500);  //since this is meant to be a gif it should probably be on the smaller side.  
@@ -12,6 +13,8 @@ void setup(){
   pendulous = new PVector();
   clockCtr = new PVector();
   handle = new PVector();
+  
+  engine = 0;
   
 /*end of setup() block*/}
 
@@ -30,6 +33,9 @@ void draw(){
   fill(#F5EAD6);  //moulding
   rect(-1, height * 0.72, width+1, 18);
   
+  
+  engine ++;
+  
 //drawing the clock
   translate(width/2, height/2);
   rectMode(CENTER);
@@ -37,7 +43,6 @@ void draw(){
   color oakOut = #180806;    //An outline to make the star pop
   color iso = #69352c;  //the "top" surface gets more direct light
   color brass = #F0EB52;
-  engine++;
   
   handle.set(0, 45);  //a handle on which to hang the clock entyre 
   clockCtr.set(handle.x, handle.y - 122);  //the middle of the clock-face
@@ -57,16 +62,17 @@ void draw(){
   fill(brass);
   stroke(brass);
   strokeWeight(3);
-  float pLong = dist(clockCtr.x, clockCtr.y, clockCtr.x, clockCtr.y + 77);
-  swing = lerp(0.25, 0.22, sin(frameCount * 0.1));
+  pLong = 77; 
+  swing = lerp(0.25, 0.22, sin(engine * 0.1));
+  pendulous.set(pLong * cos(TAU * swing), pLong * sin(TAU * swing));
   
-  line(clockCtr.x, clockCtr.y, pLong * cos(TAU * swing), pLong * sin(TAU * swing));
-  circle(pLong * cos(TAU * swing), pLong * sin(TAU * swing), 15);
+  line(clockCtr.x, clockCtr.y, pendulous.x, pendulous.y);
+  circle(pendulous.x, pendulous.y, 15);
   
   //body exterior
   fill(oak);
   stroke(oakOut);
-  int doorXoff, doorYoff, windXoff, windYoff;
+  int doorXoff, doorYoff, windXoff, windYoff;    //offsets for consistency and convenience
   doorXoff = 25;
   doorYoff = 85;
   windXoff = doorXoff - 13;
@@ -87,25 +93,28 @@ void draw(){
   
   //iso-head
   fill(iso);
-  square(0, -90, 75);
+  square(handle.x, handle.y -135, 75);
   //head
   fill(oak);
   square(handle.x, clockCtr.y, 75);
   //foot
-  rect(0, 150, 75, 30);
+  rect(handle.x, handle.y + 105, 75, 30);
   //face
   fill(#F5EAD6);
   strokeWeight(0.5);
   circle(clockCtr.x, clockCtr.y, 55);
-  
-  
- println("Swing: "+swing);
- println("animLoop: "+animLoop);
-
   //sHand
+  stroke(0);
+  strokeWeight(1);
+  line(clockCtr.x, clockCtr.y, clockCtr.x + 25 * cos(), clockCtr.y + 25 * sin()); 
   //hHand
   //pendulum
   //stalk
   
+    if(engine % 31 == 1){
+    splice++;
+    if(splice == 2){noLoop();}
+  }
+  println("Frame Count: "+frameCount+" Engine: "+engine);
 
 /*end of draw() block*/}
