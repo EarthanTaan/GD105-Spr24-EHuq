@@ -1,7 +1,7 @@
 /* I will attempt to make a simple grandfather-clock type thing but it's like, old and posessed
 or something. idk we'll see. */
-int interval, splice;
-float swing, engine, pLong;
+int interval, splice, fatalFrame;
+float swing, engine, pLong, sLong, mLong, hLong, progress;
 PShape clock, body, head, face, sHand, hHand, foot, pendulum, stalk;
 PVector pendulous, clockCtr, handle;
 
@@ -13,8 +13,6 @@ void setup(){
   pendulous = new PVector();
   clockCtr = new PVector();
   handle = new PVector();
-  
-  engine = 0;
   
 /*end of setup() block*/}
 
@@ -33,8 +31,9 @@ void draw(){
   fill(#F5EAD6);  //moulding
   rect(-1, height * 0.72, width+1, 18);
   
-  
   engine ++;
+  fatalFrame = 63;
+  progress = engine / float(fatalFrame);
   
 //drawing the clock
   translate(width/2, height/2);
@@ -106,14 +105,27 @@ void draw(){
   //sHand
   stroke(0);
   strokeWeight(1);
-  line(clockCtr.x, clockCtr.y, clockCtr.x + 25 * cos(), clockCtr.y + 25 * sin()); 
+  line(clockCtr.x, clockCtr.y, clockCtr.x + 25 * cos(TAU * 0.33 + progress * TAU), clockCtr.y + 25 * sin(TAU * 0.33 + progress * TAU)); 
   //hHand
+  strokeWeight(3);
+  line(clockCtr.x, clockCtr.y, clockCtr.x + 20 * cos(TAU * 0.45 + -progress * 2 * TAU), clockCtr.y + 20 * sin(TAU * 0.45 + -progress * 2 * TAU));
+  //mHand
+  strokeWeight(2);
+  line(clockCtr.x, clockCtr.y, clockCtr.x + 17 * cos(TAU * 0.80 + progress * 3 * TAU), clockCtr.y + 17 * sin(TAU * 0.80 + progress * 3 * TAU));
   //pendulum
   //stalk
   
-    if(engine % 31 == 1){
+  if(frameCount < 64){
+    saveFrame("Frames/####.png");
+  }
+  
+//I used this to discover how many frames I would need for a full pendulum swing.
+//I then based the other animation cycles on that frame count.
+  if(engine % 31 == 1){
     splice++;
-    if(splice == 2){noLoop();}
+    if(splice == 3){
+      noLoop();
+    }
   }
   println("Frame Count: "+frameCount+" Engine: "+engine);
 
