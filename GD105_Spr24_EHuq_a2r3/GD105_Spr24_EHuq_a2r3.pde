@@ -77,7 +77,8 @@ void draw() {
 //readouts:
   println("Heartrate: "+hRate+", Proximity: "+prox+", Engine: "+engine);
   println("Triangle side length: "+dist(hBig * cos(hPoint + hBeat), hBig * sin(hPoint + hBeat), hBig * cos(hPoint - hBeat), hBig * sin(hPoint - hBeat)));
-
+  println("Frame Count: "+frameCount);
+  
   if(broke == true){
     noLoop();
     noFill();
@@ -89,7 +90,10 @@ void draw() {
       vertex(width * 0.02, height * -0.03);
       vertex(0, height * 0.09);
     endShape();
-  }
+}
+
+  if (frameCount == 1){save("First Frame.png");}
+  if(broke == true){save("Last Frame.png");}
 
 /*end of draw loop*/ }
 
