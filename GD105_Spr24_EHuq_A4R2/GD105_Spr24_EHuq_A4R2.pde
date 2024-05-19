@@ -9,7 +9,7 @@ import java.io.*;
 File pix;
 PImage[] pixArray;
 String[] pixList;
-String filePath = "\\Users\\Student\\Documents\\GitHub\\GD105-Spr24-EHuq\\GD105_Spr24_EHuq_A4R2\\data";
+String filePath = "C:\\Users\\Student\\Documents\\GitHub\\GD105-Spr24-EHuq\\GD105_Spr24_EHuq_A4R2\\data\\";
 
 void setup(){
   //since it's from a guild card, let's go with card-shaped.
@@ -21,12 +21,10 @@ void setup(){
   
   for (String p : pixList) {
     if (p.endsWith("png")) {
-      append(pixArray, loadImage(filePath+p));
+      loadImage(filePath+p);
     }
   }
-  for (PImage i : pixArray) {
-    image(i, width/2, height/2);
-  }
+  println(pixArray.length);
   
 /* End of setup() */ }
 
