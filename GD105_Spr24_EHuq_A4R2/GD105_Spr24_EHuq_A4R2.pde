@@ -6,7 +6,7 @@ I'll need to refresh my memory on how to load images into Processing.*/
 //An array that counts from 0-14. What's to stop me from just making the first element nothing?
 import java.io.*;
 
-PImage[] pixArray;
+PImage[] pixArray = new PImage[1];
 
 void setup(){
   //since it's from a guild card, let's go with card-shaped.
@@ -14,18 +14,17 @@ void setup(){
   
   File pix = new File(dataPath("C:\\Users\\Student\\Documents\\GitHub\\GD105-Spr24-EHuq\\GD105_Spr24_EHuq_A4R2\\data\\"));
   String[] pixList = pix.list();
-  pixArray = new PImage[pixList.length];
-  for (int i = 0; i < pixList.length; i++) {
-    if (pixList[i].endsWith("png")) {
+  for (String p : pixList) {
+    int i = 1;
+    if (p.endsWith("png")) {
       pixArray[i] = loadImage(pixList[i]);
+      i++;
     } else {
       continue;
     }
   }
     
-  for (PImage p : pixArray) {
-    println(p);
-  }
+  println(pixArray[2]);
 
   
   
