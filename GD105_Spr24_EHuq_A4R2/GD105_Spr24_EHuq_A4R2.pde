@@ -3,7 +3,7 @@ Monster Hunter Rise (Sunbreak), according to my in-game "guild card", which trac
 this data and presents it as a bar graph.
 I'll need to refresh my memory on how to load images into Processing.*/
 
-/* just need to write these down for later */
+/* wrote these down for later, but didn't end up using them */
 //Play Time:708
 //Total Quests:618
 
@@ -18,7 +18,11 @@ IntDict nameDict = new IntDict();
 void setup() {
   //since it's from a guild card, let's go with card-shaped.
   size(800, 450);
+  windowTitle("Earthan's Monster Hunter Rise Sunbreak Weapon Use History");
   
+/* There are 14 weapons, so to space them evenly I can split them into two rows of 7 columns.
+They will be semi-transparent so overlaps will be visible, and each icon will display at a 
+size indicative of my preference by relativity to the other icons around it. */
   //Create 14 PVectors evenly spaced in two rows.
   for (int i = 0; i < 7; i++) {
     grid.add(new PVector(50 + width / 7 * i, height / 3));
@@ -62,19 +66,15 @@ void setup() {
 
 void draw(){
   //Rather than a color for a background, I'll be pulling in a paper texture.
+  noTint();
   imageMode(CORNER);
   image(bg, -104, -77, width * 1.28, height * 1.31);
-  
+  colorMode(100, 100);
+  tint(100, 70);
   imageMode(CENTER);
   for (Icon i : icons) {
     i.show();
     i.measure();
   }
-
-/* There are 14 weapons, so to space them evenly I can split them into two rows of 7 columns.
-They will be semi-transparent so overlaps will be visible, and each icon will display at a 
-size indicative of my preference by relativity to the other icons around it. */
-  
-  
   
 /** end of draw() */ }
