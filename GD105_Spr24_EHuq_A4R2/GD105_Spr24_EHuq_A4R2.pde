@@ -6,29 +6,33 @@ I'll need to refresh my memory on how to load images into Processing.*/
 //An array that counts from 0-14. What's to stop me from just making the first element nothing?
 import java.io.*;
 
-PImage[] pixArray = {};
+PImage[] pixArray;
 
-void setup(){
+void setup() {
   //since it's from a guild card, let's go with card-shaped.
   size(800, 450);
-  
-  File pix = new File(dataPath("C:\\Users\\Student\\Documents\\GitHub\\GD105-Spr24-EHuq\\GD105_Spr24_EHuq_A4R2\\data\\"));
-  String[] pixList = pix.list();
-  for (String p : pixList) {
-    int i = 0;
-    if (p.endsWith("png")) {
-      pixArray = append(pixArray, loadImage(p));
-      i++;
-    } else {
-      continue;
+
+  File pix = new File(dataPath(""));
+  // load the full list of what's in the data folder
+  String[] rawList = pix.list();
+  //and then let's check for what's safe
+  String tempList = "";
+  for (int i = 0; i < rawList.length; i++) {
+    if ( rawList[i].endsWith("png") ) {
+      tempList += rawList[i] + "\n";
     }
   }
-    
-  println(pixArray[2]);
+  String[] safeList = tempList.split("\n");
+  println("SAFE FILES:\n");
+  printArray(safeList);
 
+  pixArray = new PImage[safeList.length];
+  for (int i = 0; i < safeList.length; i++) {
+    pixArray[i] = loadImage(safeList[i]);
+    image(pixArray[i], i * 50, 0);
+  }
   
-  
-/* End of setup() */ }
+/* end of setup() */ }
 
 void draw(){
   //Rather than a color for a background, I'll be pulling in a paper texture.
