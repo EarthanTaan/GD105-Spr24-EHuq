@@ -27,7 +27,7 @@ Icon (PImage tempImg, PVector tempVect, int tempUses) {
 /**methods (functions & functionality)*/
 //Display on the screen (maybe? I might not need this.
 void show() {
-  image(weaponImg, place.x, place.y);
+  image(weaponImg, place.x, place.y, size, size);
 }
 
 //should this just be rolled into show() ?

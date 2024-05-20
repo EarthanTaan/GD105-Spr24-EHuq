@@ -48,18 +48,22 @@ void setup() {
   
   for (int i = 0; i < pixArray.length; i++) {
     //create a new Icon and assign it a PImage, a PVector, and uses - once per rep.
-    icons.add(new Icon(pixArray[i], grid.get(i), 23));
+    icons.add(new Icon(pixArray[i], grid.get(i), /*Statistical Data Goes Here*/));
   }
-  imageMode(CENTER);
-  for (Icon i : icons) {
-    i.show();
-  }
+
   
 /** end of setup() */ }
 
 void draw(){
   //Rather than a color for a background, I'll be pulling in a paper texture.
-  //image(bg, -104, -77, width * 1.28, height * 1.31);
+  imageMode(CORNER);
+  image(bg, -104, -77, width * 1.28, height * 1.31);
+  
+  imageMode(CENTER);
+  for (Icon i : icons) {
+    i.show();
+    i.measure();
+  }
 
 /* There are 14 weapons, so to space them evenly I can split them into two rows of 7 columns.
 They will be semi-transparent so overlaps will be visible, and each icon will display at a 
