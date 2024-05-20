@@ -5,26 +5,33 @@ class Icon {
   
 /**fields (data)*/
 //image
-PImage weapon;
+PImage weaponImg;
 //size
 int size;
 //placement
 PVector place;
 //transparency
 int alpha;
+//statistical data: times used
+int uses;
 
 /**constructor(s) (initial values)*/
-Icon (PImage tempWeap, PVector tempVect) {
-  weapon = tempWeap;
+Icon (PImage tempImg, PVector tempVect, int tempUses) {
+  weaponImg = tempImg;
   place = tempVect;
-  size = 0;  //this changes dynamically based on the data.
+  size = 0; //Placeholder. This changes dynamically based on uses, but min/init should be > 0
   alpha = 50;  //This should just be a static value I think.
+  uses = tempUses;
 }
 
 /**methods (functions & functionality)*/
 //Display on the screen (maybe? I might not need this.
 void show() {
-  image(weapon, place.x, place.y);
+  image(weaponImg, place.x, place.y);
+}
+
+void increase() {
+  
 }
 
 /**end of Icon class */ }

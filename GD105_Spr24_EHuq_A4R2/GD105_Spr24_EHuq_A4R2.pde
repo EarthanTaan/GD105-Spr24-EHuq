@@ -8,7 +8,8 @@ import java.io.*;
 
 PImage[] pixArray;
 PImage bg;
-ArrayList <PVector> grid = new ArrayList <PVector> ();
+ArrayList<PVector> grid = new ArrayList<PVector>();
+Icon[] icons; 
 
 void setup() {
   //since it's from a guild card, let's go with card-shaped.
@@ -43,14 +44,18 @@ void setup() {
 
   //for (PVector i : grid) {circle(i.x, i.y, 30);} //This was to visually check/fine-tune the corrdinates on the vector grid.
   
-  
   bg = loadImage("paduret-paper.jpg");
+  
+  for (int i = 0; i < pixArray.length; i++) {
+    //create a new Icon and assign it a PImage, a PVector, and uses - once per rep.
+    
+  }
   
 /** end of setup() */ }
 
 void draw(){
   //Rather than a color for a background, I'll be pulling in a paper texture.
-  //image(bg, -104, -77, width * 1.28, height * 1.31);
+  image(bg, -104, -77, width * 1.28, height * 1.31);
 
 /* There are 14 weapons, so to space them evenly I can split them into two rows of 7 columns.
 They will be semi-transparent so overlaps will be visible, and each icon will display at a 
