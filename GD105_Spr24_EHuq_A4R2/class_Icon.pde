@@ -2,6 +2,7 @@
 a size onto. */
 
 class Icon {
+  
 /**fields (data)*/
 //image
 PImage weapon;
@@ -12,19 +13,18 @@ PVector place;
 //transparency
 int alpha;
 
-
 /**constructor(s) (initial values)*/
-Icon () {
-  weapon = new PImage();
+Icon (PImage tempWeap, PVector tempVect) {
+  weapon = tempWeap;
+  place = tempVect;
   size = 0;  //this changes dynamically based on the data.
-  place = new PVector();
   alpha = 50;  //This should just be a static value I think.
 }
 
 /**methods (functions & functionality)*/
 //Display on the screen (maybe? I might not need this.
 void show() {
-  
+  image(weapon, place.x, place.y);
 }
 
 /**end of Icon class */ }
