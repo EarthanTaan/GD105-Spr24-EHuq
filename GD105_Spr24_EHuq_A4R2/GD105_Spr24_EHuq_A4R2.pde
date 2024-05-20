@@ -47,10 +47,11 @@ void setup() {
   
   bg = loadImage("paduret-paper.jpg");
   
-  String[] statsTxt = loadStrings("stats.txt");
-  for (String s : statsTxt) {
-    nameDict.set(String Key, int value);
+  String[] tempTxt = loadStrings("stats.txt");
+  for (String s : tempTxt) {
+    nameDict.set(s.substring(0, s.indexOf(':')), int(s.substring(s.indexOf(' '))));
   }
+  println("The Name Dictionary's size is "+nameDict.size());
   
   for (int i = 0; i < pixArray.length; i++) {
     //create a new Icon and assign it a PImage, a PVector, and uses - once per rep.
