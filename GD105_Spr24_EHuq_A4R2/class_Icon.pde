@@ -7,10 +7,10 @@ class Icon {
 //image
 PImage weaponImg;
 //size
-int size;
+float size;
 //placement
 PVector place;
-//transparency
+//transparency (this might be too complicated)
 int alpha;
 //statistical data: times used
 int uses;
@@ -18,8 +18,8 @@ int uses;
 /**constructor(s) (initial values)*/
 Icon (PImage tempImg, PVector tempVect, int tempUses) {
   weaponImg = tempImg;
-  place = tempVect;
   size = 0; //Placeholder. This changes dynamically based on uses, but min/init should be > 0
+  place = tempVect;
   alpha = 50;  //This should just be a static value I think.
   uses = tempUses;
 }
@@ -30,8 +30,10 @@ void show() {
   image(weaponImg, place.x, place.y);
 }
 
-void increase() {
-  
+//should this just be rolled into show() ?
+void measure() {
+  size = (lerp(size, uses, frameCount * 0.01));
+  //bigger than before
 }
 
 /**end of Icon class */ }
