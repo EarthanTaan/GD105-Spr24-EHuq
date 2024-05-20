@@ -10,6 +10,7 @@ PImage[] pixArray;
 PImage bg;
 ArrayList<PVector> grid = new ArrayList<PVector>();
 ArrayList<Icon> icons = new ArrayList<Icon>();
+IntDict nameDict = new IntDict();
 
 void setup() {
   //since it's from a guild card, let's go with card-shaped.
@@ -46,9 +47,9 @@ void setup() {
   
   bg = loadImage("paduret-paper.jpg");
   
-  String[] tempStats = loadStrings("stats.txt");
-  for (String s : tempStats) {
-    println(s);
+  String[] statsTxt = loadStrings("stats.txt");
+  for (String s : statsTxt) {
+    nameDict.set(String Key, int value);
   }
   
   for (int i = 0; i < pixArray.length; i++) {
