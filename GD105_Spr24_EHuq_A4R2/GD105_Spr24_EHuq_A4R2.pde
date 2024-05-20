@@ -76,5 +76,5 @@ void draw(){
     i.show();
     i.measure();
   }
-  
+  if(mousePressed){save("GD105 Spr24 EHuq A4R2 output.png");}
 /** end of draw() */ }
