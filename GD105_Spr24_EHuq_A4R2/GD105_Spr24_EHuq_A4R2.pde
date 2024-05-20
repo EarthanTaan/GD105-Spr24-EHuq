@@ -40,9 +40,8 @@ void setup() {
   for (int i = 0; i < 7; i++) {
     grid.add(new PVector(50 + width / 7 * i, height / 3 * 2));
   }
-  for (PVector i : grid) {
-    circle(i.x, i.y, 30);
-  }
+
+  //for (PVector i : grid) {circle(i.x, i.y, 30);} //This was to visually check/fine-tune the corrdinates on the vector grid.
   
   
   bg = loadImage("paduret-paper.jpg");
