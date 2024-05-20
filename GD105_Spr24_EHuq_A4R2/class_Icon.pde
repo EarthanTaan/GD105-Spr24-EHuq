@@ -18,9 +18,9 @@ int uses;
 /**constructor(s) (initial values)*/
 Icon (PImage tempImg, PVector tempVect, int tempUses) {
   weaponImg = tempImg;
-  size = 0; //Placeholder. This changes dynamically based on uses, but min/init should be > 0
+  size = 0; //Placeholder? This changes dynamically based on uses, but min/init should be > 0
   place = tempVect;
-  alpha = 50;  //This should just be a static value I think.
+  alpha = 50;  //This should just be a static value I think. Currently unused.
   uses = tempUses;
 }
 

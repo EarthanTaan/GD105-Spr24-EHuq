@@ -3,7 +3,10 @@ Monster Hunter Rise (Sunbreak), according to my in-game "guild card", which trac
 this data and presents it as a bar graph.
 I'll need to refresh my memory on how to load images into Processing.*/
 
-//An array that counts from 0-14. What's to stop me from just making the first element nothing?
+/* just need to write these down for later */
+//Play Time:708
+//Total Quests:618
+
 import java.io.*;
 
 PImage[] pixArray;
@@ -15,6 +18,14 @@ IntDict nameDict = new IntDict();
 void setup() {
   //since it's from a guild card, let's go with card-shaped.
   size(800, 450);
+  
+  //Create 14 PVectors evenly spaced in two rows.
+  for (int i = 0; i < 7; i++) {
+    grid.add(new PVector(50 + width / 7 * i, height / 3));
+  }  //probably could have automated both rows but don't ask me how.
+  for (int i = 0; i < 7; i++) {
+    grid.add(new PVector(50 + width / 7 * i, height / 3 * 2));
+  }
   
   File pix = new File(dataPath(""));
   // load the full list of what's in the data folder
@@ -30,34 +41,22 @@ void setup() {
   //println("SAFE FILES:\n");
   //printArray(safeList);
   
+  //create a dict associating weapon names with their use values
+  String[] tempTxt = loadStrings("stats.txt");
+  for (String s : tempTxt) {
+    nameDict.set(s.substring(0, s.indexOf(':')), int(s.substring(s.indexOf(':')+1))); 
+  }
+  
   pixArray = new PImage[safeList.length];
   for (int i = 0; i < safeList.length; i++) {
     pixArray[i] = loadImage(safeList[i]);
-    //image(pixArray[i], i * 50, 0);  //this line just checks that the array has pics in it.
-  }
-  
-  for (int i = 0; i < 7; i++) {
-    grid.add(new PVector(50 + width / 7 * i, height / 3));
-  }
-  for (int i = 0; i < 7; i++) {
-    grid.add(new PVector(50 + width / 7 * i, height / 3 * 2));
-  }
-
-  //for (PVector i : grid) {circle(i.x, i.y, 30);} //This was to visually check/fine-tune the corrdinates on the vector grid.
-  
-  bg = loadImage("paduret-paper.jpg");
-  
-  String[] tempTxt = loadStrings("stats.txt");
-  for (String s : tempTxt) {
-    nameDict.set(s.substring(0, s.indexOf(':')), int(s.substring(s.indexOf(' '))));
-  }
-  println("The Name Dictionary's size is "+nameDict.size());
-  
-  for (int i = 0; i < pixArray.length; i++) {
     //create a new Icon and assign it a PImage, a PVector, and uses - once per rep.
-    //icons.add(new Icon(pixArray[i], grid.get(i), /*Statistical Data Goes Here*/));
+    icons.add(new Icon(pixArray[i], grid.get(i), 
+    nameDict.get(safeList[i].substring(0, safeList[i].indexOf('.')))));
+    
   }
 
+  bg = loadImage("paduret-paper.jpg");
   
 /** end of setup() */ }
 
