@@ -1,0 +1,16 @@
+Play Time: 708
+Total Quests: 618
+GS: 65
+LS: 37
+SnS: 23
+DB: 6
+BNK: 6
+HH: 70
+LNC: 103
+GL: 27
+SWX: 39
+CB: 25
+IG: 136
+LBG: 3
+HBG: 38
+Bow: 40

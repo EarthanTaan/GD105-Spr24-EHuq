@@ -46,9 +46,14 @@ void setup() {
   
   bg = loadImage("paduret-paper.jpg");
   
+  String[] tempStats = loadStrings("stats.txt");
+  for (String s : tempStats) {
+    println(s);
+  }
+  
   for (int i = 0; i < pixArray.length; i++) {
     //create a new Icon and assign it a PImage, a PVector, and uses - once per rep.
-    icons.add(new Icon(pixArray[i], grid.get(i), /*Statistical Data Goes Here*/));
+    //icons.add(new Icon(pixArray[i], grid.get(i), /*Statistical Data Goes Here*/));
   }
 
   
