@@ -1,0 +1,2 @@
+hunger 0
+age 0
