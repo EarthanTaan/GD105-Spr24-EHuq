@@ -7,42 +7,44 @@ original as a transparent overlay and fine tune the lines in tweak mode to tight
 mimicry.
 */
 
-PImage ref = loadImage("nassos-daphnis-ss-1-78 ref.jpg");
+PImage ref;
 
 void setup(){
-  
   //original dimensions: 30 x 22 in.
   //sketch dimensions: inches times 30
   size(660, 900);
+  ref = loadImage("nassos-daphnis-ss-1-78 ref.jpg");
+
 }
 
 void draw(){
   //setting the outer bounds of the linework
-  PVector ptA = new PVector(110, 100);
-  PVector ptB = new PVector(545, ptA.y);
-  PVector ptC = new PVector(ptA.x, 800);
-  PVector ptD = new PVector(ptB.x, ptC.y);
+  PVector ptA = new PVector(119, 100);  //upper & left bound
+  PVector ptB = new PVector(554, ptA.y);  //righthand bound
+  PVector ptC = new PVector(ptA.x, 799);  //bottom bound
+  PVector ptD = new PVector(ptB.x, ptC.y); //lower left corner
   
   //defining the second vertical line
-  PVector line2A = new PVector(190, ptA.y);
+  PVector line2A = new PVector(196, ptA.y);
   PVector line2B = new PVector(line2A.x, ptC.y);
   
   //defining the third vertical line
-  PVector line3A = new PVector(480, ptA.y);
+  PVector line3A = new PVector(490, ptA.y);
   PVector line3B = new PVector(line3A.x, ptC.y);
   
   // Setting parameters for the horizontal lines.
   // runglength.x is the start of the right rungs
   // runglength.y is the end of the left rungs
   // ht12 contains the heights for rungs 1 & 2, etc.
-  PVector runglength = new PVector(240, 430);
-  PVector ht12 = new PVector(145, 200);
+  PVector runglength = new PVector(249, 439);
+  PVector ht12 = new PVector(141, 200);
   PVector ht34 = new PVector(258, 317);
-  PVector ht56 = new PVector(375, 430);
+  PVector ht56 = new PVector(374, 432);
   PVector ht78 = new PVector(490, 550);
-  PVector ht910 = new PVector(610, 670);
-  PVector ht1112 = new PVector(730, 785);
+  PVector ht910 = new PVector(607, 664);
+  PVector ht1112 = new PVector(724, 784);
 
+  colorMode(255);
   background(212);
   strokeCap(SQUARE);
   
@@ -76,12 +78,11 @@ void draw(){
   line(line2A.x, ht910.y, runglength.y, ht910.y);
   line(line2A.x, ht1112.y, runglength.y, ht1112.y);
   
-  colorMode(100, 100);
-  tint(100, 50);
-  ref.resize(width, height);
-  image(ref, 0, 0);
+  //colorMode(100, 100);
+  //tint(100, 31);
+  //ref.resize(width+50, height+55);
+  //image(ref, -24, -27);
   
   if (frameCount == 1){save("GD105 Spr24 EHuq a1r1 output.png");}
 
-  
 }
