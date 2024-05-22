@@ -1,15 +1,16 @@
-/* I will attempt to make a simple grandfather-clock type thing but it's like, old and posessed
+/* Revision: It's spookier. Now I have to remember how to re-make the gif.
+
+I will attempt to make a simple grandfather-clock type thing but it's like, old and posessed
 or something. idk we'll see. */
+
 int interval, splice, fatalFrame;
 float swing, engine, pLong, sLong, mLong, hLong, progress;
 PShape clock, body, head, face, sHand, hHand, foot, pendulum, stalk;
 PVector pendulous, clockCtr, handle;
 
-
 void setup(){
   size(250, 500);  //since this is meant to be a gif it should probably be on the smaller side.  
   frameRate(50);
-  
   pendulous = new PVector();
   clockCtr = new PVector();
   handle = new PVector();
@@ -18,17 +19,30 @@ void setup(){
 
 void draw(){
 //setting up the background
-  background(#83af9c);  //the wall
+  background(#585576);  //the wall
   noStroke();
   rectMode(CORNER);
-  fill(#927342);  //the floor
+  fill(#705228);  //the floor
   rect(-1, height * 0.75, width+1, height * 0.25);
-  stroke(#7c5c29);  //floorboards
+  stroke(#48361b);  //floorboards
   for(int i = 0; i < 250; i+=15){
     line(i, height * 0.75, i, height);
   }
+  
+//a spooky crack in the wall
+  strokeWeight(2);
+  stroke(2);
+  noFill();
+  beginShape();
+  vertex(190, 366); vertex(171, 335);
+  vertex(185, 325); vertex(175, 302);
+  endShape();
+  beginShape();
+  vertex(185, 325); vertex(201, 320); vertex(205, 307);
+  endShape();
+  
   noStroke();
-  fill(#F5EAD6);  //moulding
+  fill(#b5afa4);  //moulding
   rect(-1, height * 0.72, width+1, 18);
   
   engine ++;
@@ -38,7 +52,7 @@ void draw(){
 //drawing the clock
   translate(width/2, height/2);
   rectMode(CENTER);
-  color oak = #57251C;    //oak chassis
+  color oak = #572503;    //oak chassis
   color oakOut = #180806;    //An outline to make the star pop
   color iso = #69352c;  //the "top" surface gets more direct light
   color brass = #F0EB52;
