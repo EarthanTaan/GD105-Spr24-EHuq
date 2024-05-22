@@ -1,11 +1,13 @@
 //"crime against property is relatively unimportant"
 
+PImage bg;
 PFont Castellar;
 String tru = "crime  against  property is relatively unimportant";
 
 void setup(){
 //I want to do something with an uncommon canvas shape.
   size(200, 985);
+  bg = loadImage("black marble.jpg");
   
 //Choosing a "fancy" font that evokes moneyed interets,
 //for juxtaposition with statement.
@@ -15,10 +17,9 @@ void setup(){
 }
 
 void draw(){
-  
+  image(bg, 0, 0);
   translate(width/2, height/2);
-  background(72); //slate gray like a bank wall
-  fill(#fcea4f); //gold
+  fill(#7d7000); //gold
 
   rotate(TAU*0.250);
   text(tru, -502,96);
