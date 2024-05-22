@@ -12,7 +12,10 @@ unpleasant, so instead I slowed it way way down to a slow, almost tidal throb.
 
 void setup() {
 //The moment I saw what moire is, I knew I was going to do it in 3D.
-  size(500, 500, P3D);
+  size(500, 500, P3D); //I like working with smaller canvases I guess. Something about the
+  //limited focus I think makes the piece more impactful. Similar to photography - by selecting
+  //what you frame, you create significance almost arbitrarily. These smaller pieces don't waste
+  //space, or waste time filling excess space. It just does precisely what it does, economically.  
 }
 
 void draw() {
@@ -25,6 +28,9 @@ void draw() {
 
   float boxSize = width;
 
+//I started with a much lower number of boxes, I think 10, because I was worried about it being
+//visually overwhelming, but on the contrary, the more I increased this number, the more appealing
+//was the result. Finally settled on 50.
   for (int i = 0; i < 50; i ++) {
     rotateY(frameCount * 0.0001);
     rotateX(frameCount * 0.0002);
