@@ -1,16 +1,25 @@
-/* I'm going try to make a heart-shape which beats faster the closer the mouse gets to it,
+/* Revision: This is another one that landed so on-target that I'm not sure I'll be able to 
+improve it. I'll take a look.
+Update: I tried a few things, most of them broke it. I was able to use a sleek,
+? conditional instead of a whole if/then/else statement. I've been looking for a excuse. It seems
+they don't work unless you have two possible outcomes, I wasn't able to write a ? conditional
+that worked with only one outcome.
+
+I'm going try to make a heart-shape which beats faster the closer the mouse gets to it,
  and if I can pull that off, I want to make it shatter/stop if clicked on. Wish me luck.*/
 
 float hBig, hBeat, hPoint, lHip, rHip, hRate, prox, engine, buttDepth, buttWideOffset;
-//h = heart; Beat, Rate = offset and speed of beat anim.; prox = proximity of mouse to heart
-//lHip is left hip
+//h = heart; Beat, Rate = offset and speed of beat animation; prox = proximity of mouse to heart
+//lHip is left hip, rHip is right hip
 PShape heart;
 PVector hShoulderL, hShoulderR, buttCrack, LCP1, LCP2, RCP1, RCP2/*listen it is what it is*/;
 boolean broke = false;
 
 void setup() {
   windowTitle("The Mouse Reactive Piece, or The Mortifying Ordeal");
-  size(1000, 1000);  // I was originally going to do a small one, but I'll need ample space around the heart to communicate the effect. (But my screen's not very big)
+// I was originally going to do a small one, but I'll need ample space around the heart to 
+//communicate the effect. (But my screen's not very big)
+  size(1000, 1000);
   hShoulderL = new PVector();
   hShoulderR = new PVector();
   buttCrack = new PVector();
@@ -22,16 +31,10 @@ void setup() {
 } //end of setup() block
 
 void draw() {
-  
   translate(width/2, height/2);
-  background(0);  //note: change this to lerp between black and red when too close
   //Change the background a warning flash when too close
-  if(prox < 100){
-    background(lerpColor(#000000, #5E0000, abs(sin(engine * 0.15))));
-  }
-  if(broke == true){
-    background(255);
-  }
+  background(prox < 100 ? lerpColor(#000000, #5E0000, abs(sin(engine * 0.15))) : 0);
+  if(broke == true){background(255);}
   shapeMode(CENTER);
   noStroke();
   fill(#D30F0F);
