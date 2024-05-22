@@ -2,7 +2,12 @@
 This will be adapted from a piece by Nassos Daphnis,
 entitled "SS-1-78" (1978), making it 6 years
 older than myself.
+Revision: I'm not sure how much I can streamline this very simple code, but I can pull in the
+original as a transparent overlay and fine tune the lines in tweak mode to tighten up the 
+mimicry.
 */
+
+PImage ref = loadImage("nassos-daphnis-ss-1-78 ref.jpg");
 
 void setup(){
   
@@ -70,6 +75,11 @@ void draw(){
   line(line2A.x, ht78.y, runglength.y, ht78.y);
   line(line2A.x, ht910.y, runglength.y, ht910.y);
   line(line2A.x, ht1112.y, runglength.y, ht1112.y);
+  
+  colorMode(100, 100);
+  tint(100, 50);
+  ref.resize(width, height);
+  image(ref, 0, 0);
   
   if (frameCount == 1){save("GD105 Spr24 EHuq a1r1 output.png");}
 
