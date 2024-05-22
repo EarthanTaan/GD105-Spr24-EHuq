@@ -1,3 +1,7 @@
+/** Revision: I'll be honest, I don't think this is fixable. I'd have to completely
+redo it with like a completely different concept. This is as good as this gets.
+Update: okay adding noSmooth helped a lot.*/
+
 //A map of my bookbag's organizational layout, for my own memory.
 //gotta declare variables out here if I 
 //want to use them in both setup and draw
@@ -16,7 +20,7 @@ void setup(){
   size(1000, 1000); //(TIL size has to be first)
   ocra10 = loadFont("OCRAExtended-10.vlw");  
   windowTitle("The Map Piece");
-  
+  noSmooth();
 }
 
 void draw(){ //Draw the map.

@@ -1,4 +1,8 @@
-/* The Shape and Color Piece, Prompt 2
+/* Revision: I could the transparency again on this one, but I think that may be
+more trouble than it's worth in this case.
+Update: nah it wasn't so bad.
+
+The Shape and Color Piece, Prompt 2
  Based on Kamal Boullata's "Lam Alif" (1983)
 (This is older than me if it was revealed in Jan or early Feb.)
  Original size: 51 × 51 cm (turns out this is not true, the real piece is not square)
@@ -7,9 +11,6 @@
  2: #882b5d light purple
  3: #A13727 dark orange
  4: #BA4823 light orange
-
-Revision: I could the transparency again on this one, but I think that may be
-more trouble than it's worth in this case.
  */
 PImage ref;
 

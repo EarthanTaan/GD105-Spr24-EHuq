@@ -1,3 +1,6 @@
+/** Revision: Pulled in a dark marble background and darkened the gold lettering
+to make it look a little more material. */
+
 //"crime against property is relatively unimportant"
 
 PImage bg;

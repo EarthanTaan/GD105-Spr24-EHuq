@@ -1,10 +1,12 @@
 /*
-This will be adapted from a piece by Nassos Daphnis,
-entitled "SS-1-78" (1978), making it 6 years
-older than myself.
 Revision: I'm not sure how much I can streamline this very simple code, but I can pull in the
 original as a transparent overlay and fine tune the lines in tweak mode to tighten up the 
 mimicry.
+
+This will be adapted from a piece by Nassos Daphnis,
+entitled "SS-1-78" (1978), making it 6 years
+older than myself.
+
 */
 
 PImage ref;

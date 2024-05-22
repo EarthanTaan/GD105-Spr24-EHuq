@@ -1,4 +1,8 @@
-/*  Tried to make what I thought would be a simple spirograph-like effect. Took me entirely too
+/*  Revision: I tried to make this a little more animated. I'm not sure why, but I still can't 
+get these things to swoop around the screen like I thought they would - but I got them to 
+flash as they reset. It isn't what I wanted or expecetd, but it's still an improvement.  
+
+Tried to make what I thought would be a simple spirograph-like effect. Took me entirely too
 long to understand sin/cos (and I still don't think I do), and then almost nothing I tried to
 do worked the way I expected - but hey that's art sometimes, right?
 In the end, what I have here is a program that will generate a different work each time it's run,
@@ -13,30 +17,35 @@ color from, to;   //trying to lerp some colors
 int seed = int(random(999999999));
 
 void setup(){
+  frameRate(10);
   randomSeed(seed);
   windowTitle("The Layered Drawing Piece");
   size(900, 900);
   background(50);    //This BG allows some cooler colors to pop as much as warmer ones.
-  noLoop();    //Had to cut off the damned thing.
+  //noLoop();    //Had to cut off the damned thing.
   strokeWeight(1);
   noFill();  //Triangles should overlap loudly and create a bit of clutter.
 }
 
 void draw(){
+  fill(50, 20);
+  rect(0, 0, width, height);
   translate(width/2, height/2);
-
+  
 //I hand-adjusted most of these values repeatedly to achieve an appealing result. None of my
 //predictions were correct, so it was just trial and error.
-  for(int i = 0; i<10; i++){
+  for(int i = 0; i < 10; i++){
+    if(frameCount % 20 == 0){  //this gave it a sort of fireworks-display quality that I like
     from = color(random(255), random(255), random(255));
     to = color(random(255), random(255), random(255));
     stroke(lerpColor(from, to, i));
     spiroTri(random(-0.50,0.50), random(-0.50,0.50), random(0.25), random(1.00));
+    }
   }
 
 }
 
-/* A function to draw an equilateral triamgle around a central point.
+/* A function to draw an equilateral triangle around a central point.
 Expects floats X and Y values for the middle point, a radius, and a "yoke" or control point. 
 The yoke is the "top" of the triangle, from which the other two points are derived. The numbers
 given for midX, midY, and the radius are automatically multiplied by width or height. The yoke is

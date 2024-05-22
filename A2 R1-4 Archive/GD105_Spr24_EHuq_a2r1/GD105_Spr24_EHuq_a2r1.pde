@@ -1,4 +1,8 @@
-/*Going kinda stream-of consciousness with this one. I approached it more or less like I would
+/** Revision: I'm going to try one more time to make it look like she's puking the train rather
+than the other direction.
+Update: I did my best, man.
+
+Going kinda stream-of consciousness with this one. I approached it more or less like I would
 a magazine ocllage. I searched free image sites for images related to "Lifestyle" and then 
 "Among Us", collected a stack of pictures that had a vibe, stripped out most of the backgrounds
 and stuck them in the data folder. It doesn't feel like a collage to me without a some cardboard
@@ -56,9 +60,9 @@ void draw(){
   pop();push();
     
   //weights lady
-  translate(width*-0.568, height*-0.072);
-  rotate(TAU*-0.208);
-  scale(0.71);
+  translate(width*-0.546, height*-0.328);
+  rotate(TAU*-0.075);
+  scale(0.73);
   image(weights, 0, 0);
   pop();push();  
   
@@ -106,7 +110,7 @@ void draw(){
   pop();push();
   
   //hat
-  translate(width*-0.241, height*0.201);
+  translate(width*-0.245, height*0.201);
   scale(1.942);
   rotate(TAU*0.042);
   imageMode(CENTER);
@@ -114,9 +118,9 @@ void draw(){
   pop();push();
     
   //train puke
-  translate(width*-0.544, height*-0.073);
-  rotate(TAU*-0.191);
-  scale(0.70);
+  translate(width*-0.561, height*-0.265);
+  rotate(TAU*0.029);
+  scale(0.57);
   image(train, 0, 0);
   pop();push();
   

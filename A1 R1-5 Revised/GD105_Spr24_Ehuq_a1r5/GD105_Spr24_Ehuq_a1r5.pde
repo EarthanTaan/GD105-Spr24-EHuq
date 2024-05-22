@@ -1,4 +1,8 @@
-/* The Album Cover Piece
+/* Revision: Absolutely not, I'm not touching this.
+Update: I thought noSmooth might make it prettier; it didn't. I thought noLoop might make it
+render more quickly; it didn't. No improvements made.
+
+The Album Cover Piece
  This will be an original cover for the score for 'Final Fantasy Tactics', by Hitoshi Sakimoto
  and Masaharu Iwata.
  Dissatified with the album covers I found, I imagined instead what kind of
@@ -17,6 +21,7 @@
  */
 
 // Before Setup: Create variables
+/** Variables are labeled below, when initialized. */
 float whsqOff, blsqOff, thOff, htOff, top, bot, left, right, front, back, bend;
 PShape spine, page, board, backcover, book, whsq, B1, C2, B3, A2;
 PFont altima;
@@ -248,8 +253,6 @@ to begin running, so I started wanting to get as much work done in one Tweak-run
   translate(0, 0, 0.53);
   noStroke();
   circle(0, -25.74, 6.53); //hide the overlapping outline
-  
-
 
   pop();  //restore centered angle for what follows
   lights();
@@ -262,5 +265,5 @@ to begin running, so I started wanting to get as much work done in one Tweak-run
     
   // Don't forget to save the final image in a .png
   if (frameCount == 1){save("GD105 Spr24 EHuq a1r5 output.png");}
-  
+  noLoop();  //Because rendering the image is so intensive, I added this so it only renders once.
 }
